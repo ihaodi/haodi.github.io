@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ihaodi.net/"/>
-  <updated>2016-03-17T08:09:04.000Z</updated>
+  <updated>2016-03-18T12:46:38.000Z</updated>
   <id>http://ihaodi.net/</id>
   
   <author>
@@ -16,13 +16,55 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>coding.net上搭建hexo博客</title>
+    <link href="http://ihaodi.net/2016/03/18/coding-net%E4%B8%8A%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://ihaodi.net/2016/03/18/coding-net上搭建hexo博客/</id>
+    <published>2016-03-18T07:03:18.000Z</published>
+    <updated>2016-03-18T12:46:38.000Z</updated>
+    
+    <content type="html">&lt;p&gt;在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到唐巧的一篇文章 &lt;a href=&quot;http://devtang.com/2016/02/16/from-octopress-to-hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建hexo博客&lt;/a&gt;。好吧，那就玩一下~&lt;/p&gt;
+&lt;h2 id=&quot;在mac上搭建Hexo&quot;&gt;&lt;a href=&quot;#在mac上搭建Hexo&quot; class=&quot;headerlink&quot; title=&quot;在mac上搭建Hexo&quot;&gt;&lt;/a&gt;在mac上搭建Hexo&lt;/h2&gt;&lt;p&gt;Hexo 原理:（引自唐巧）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Hexo 的原理和 Octopress 一样，都是生成静态文件，这样可以方便地托管到 GitHub 和 GitCafe 上。&lt;/li&gt;
+&lt;li&gt;Hexo 是基于 Node 的，而 Node 的速度非常快。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;mac上Hexo环境安装&quot;&gt;&lt;a href=&quot;#mac上Hexo环境安装&quot; class=&quot;headerlink&quot; title=&quot;mac上Hexo环境安装&quot;&gt;&lt;/a&gt;mac上Hexo环境安装&lt;/h3&gt;&lt;p&gt;先是装 node 看看这篇文章 &lt;a href=&quot;http://blog.teamtreehouse.com/install-node-js-npm-mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.teamtreehouse.com/install-node-js-npm-mac&lt;/a&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 看看有木有 homebrow 木有就安装&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 使用Homebrew安装 快捷方便&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$brew install node&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;安装完成之后 会看到如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/2016-03-186.05.51.png&quot; alt=&quot;图片&quot;&gt;&lt;br&gt;然后&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 安装hexo环境&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g hexo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 新建文件夹 如：Hexoblog 文件夹 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cd Hexoblog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 初始化hexo 博客所需的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;之后就基本装完了&lt;/p&gt;
+&lt;h3 id=&quot;Hexo-插件安装&quot;&gt;&lt;a href=&quot;#Hexo-插件安装&quot; class=&quot;headerlink&quot; title=&quot;Hexo 插件安装&quot;&gt;&lt;/a&gt;Hexo 插件安装&lt;/h3&gt;&lt;p&gt;把下班的代码全复制粘贴到终端 就会全部执行&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-index --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-archive --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-category --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-tag --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-server --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-git --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-heroku --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-rsync --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-openshift --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-renderer-marked@0.2 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-renderer-stylus@0.2 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-feed@1 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-sitemap@1 --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;Hexo-的执行&quot;&gt;&lt;a href=&quot;#Hexo-的执行&quot; class=&quot;headerlink&quot; title=&quot;Hexo 的执行&quot;&gt;&lt;/a&gt;Hexo 的执行&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 新建文章&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo n #文章标题#&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 编译生成文章所配置的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 开启服务&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo s&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;就可以访问&lt;a href=&quot;http://localhost:8080&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080&lt;/a&gt;啦&lt;/p&gt;
+&lt;p&gt;##部署到coding.net&lt;br&gt;注册登录 添加仓库 这里就不说类 不会自己度娘谷歌&lt;/p&gt;
+&lt;p&gt;进入之前生成的 Hexoblog 文件夹&lt;br&gt;你会看到如下图&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/屏幕快照 2016-03-18 下午8.32.03.png&quot; alt=&quot;目录图&quot;&gt;&lt;br&gt;编辑 _config.yml &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;deploy:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; type: git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; repo: https://git.coding.net/ihaodi/blog.git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; branch: master&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;输入 用户名 密码 &lt;code&gt;$hexo d&lt;/code&gt; 分分钟部署上去了&lt;/p&gt;
+&lt;p&gt;然后在 coding上点击 [演示] 按步骤一步一步来.&lt;/p&gt;
+&lt;p&gt;完成！ 就可以访问啦&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Hello World</title>
     <link href="http://ihaodi.net/2016/03/17/hello-world/"/>
     <id>http://ihaodi.net/2016/03/17/hello-world/</id>
     <published>2016-03-17T08:09:04.000Z</published>
-    <updated>2016-03-17T08:09:04.000Z</updated>
+    <updated>2016-03-18T06:14:02.000Z</updated>
     
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+    <content type="html">&lt;p&gt;这个世界都是从 hello world 开始的&lt;/p&gt;
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -35,7 +77,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;这个世界都是从 hello world 开始的&lt;/p&gt;
+&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first pos
     
     </summary>
     
