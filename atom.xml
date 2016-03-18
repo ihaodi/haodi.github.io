@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ihaodi.net/"/>
-  <updated>2016-03-18T12:46:38.000Z</updated>
+  <updated>2016-03-18T12:50:04.000Z</updated>
   <id>http://ihaodi.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ihaodi.net/2016/03/18/coding-net%E4%B8%8A%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/"/>
     <id>http://ihaodi.net/2016/03/18/coding-net上搭建hexo博客/</id>
     <published>2016-03-18T07:03:18.000Z</published>
-    <updated>2016-03-18T12:46:38.000Z</updated>
+    <updated>2016-03-18T12:50:04.000Z</updated>
     
     <content type="html">&lt;p&gt;在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到唐巧的一篇文章 &lt;a href=&quot;http://devtang.com/2016/02/16/from-octopress-to-hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建hexo博客&lt;/a&gt;。好吧，那就玩一下~&lt;/p&gt;
 &lt;h2 id=&quot;在mac上搭建Hexo&quot;&gt;&lt;a href=&quot;#在mac上搭建Hexo&quot; class=&quot;headerlink&quot; title=&quot;在mac上搭建Hexo&quot;&gt;&lt;/a&gt;在mac上搭建Hexo&lt;/h2&gt;&lt;p&gt;Hexo 原理:（引自唐巧）&lt;/p&gt;
@@ -37,7 +37,7 @@
 &lt;h3 id=&quot;Hexo-插件安装&quot;&gt;&lt;a href=&quot;#Hexo-插件安装&quot; class=&quot;headerlink&quot; title=&quot;Hexo 插件安装&quot;&gt;&lt;/a&gt;Hexo 插件安装&lt;/h3&gt;&lt;p&gt;把下班的代码全复制粘贴到终端 就会全部执行&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-index --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-archive --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-category --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-tag --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-server --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-git --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-heroku --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-rsync --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-deployer-openshift --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-renderer-marked@0.2 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-renderer-stylus@0.2 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-feed@1 --save&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install hexo-generator-sitemap@1 --save&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h3 id=&quot;Hexo-的执行&quot;&gt;&lt;a href=&quot;#Hexo-的执行&quot; class=&quot;headerlink&quot; title=&quot;Hexo 的执行&quot;&gt;&lt;/a&gt;Hexo 的执行&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 新建文章&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo n #文章标题#&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 编译生成文章所配置的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo g&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 开启服务&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo s&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;就可以访问&lt;a href=&quot;http://localhost:8080&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:8080&lt;/a&gt;啦&lt;/p&gt;
+&lt;p&gt;就可以访问&lt;a href=&quot;http://localhost:4000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000&lt;/a&gt;啦&lt;/p&gt;
 &lt;p&gt;##部署到coding.net&lt;br&gt;注册登录 添加仓库 这里就不说类 不会自己度娘谷歌&lt;/p&gt;
 &lt;p&gt;进入之前生成的 Hexoblog 文件夹&lt;br&gt;你会看到如下图&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;../images/屏幕快照 2016-03-18 下午8.32.03.png&quot; alt=&quot;目录图&quot;&gt;&lt;br&gt;编辑 _config.yml &lt;/p&gt;
@@ -79,6 +79,290 @@
     
       &lt;p&gt;这个世界都是从 hello world 开始的&lt;/p&gt;
 &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first pos
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>App 推广运营图</title>
+    <link href="http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/"/>
+    <id>http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/</id>
+    <published>2016-01-17T05:43:24.000Z</published>
+    <updated>2016-03-18T15:33:46.000Z</updated>
+    
+    <content type="html">&lt;p&gt;App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; title=&quot;推广图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.20.png&quot; alt=&quot;&quot; title=&quot;分工图&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; title=&quot;推广图&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="business" scheme="http://ihaodi.net/categories/business/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>这个2015年的总结到了</title>
+    <link href="http://ihaodi.net/2016/01/01/2016-01-01-zhe-ge-2015nian-de-zong-jie-dao-liao/"/>
+    <id>http://ihaodi.net/2016/01/01/2016-01-01-zhe-ge-2015nian-de-zong-jie-dao-liao/</id>
+    <published>2015-12-31T16:02:08.000Z</published>
+    <updated>2016-03-18T15:32:33.000Z</updated>
+    
+    <content type="html">&lt;p&gt;时光流逝，这短短的2015就这么过了。在这一年里，我动荡了不少，从帝都北京来到了杭州，又换了几家公司，随着移动互联网大潮 起起落落。&lt;/p&gt;
+&lt;p&gt;毕业也有几年了，从国家电网 到 在阳光保险开发移动医疗APP，再到创业公司 我请客，再到跨境电商 聚贸，有所感叹吧。&lt;/p&gt;
+&lt;p&gt;不管在哪 总能碰到对我帮助非常大的同事，国家电网国电通公司 宇哥，毕业之后我的第一个老大，我的启蒙技术，离不开他的身影，没有他 我不知道 我现在是不是还是一无所长，这里谢谢宇哥。第二个 阳光保险集团捷瑞康移动医疗技术总监 崔总，唯一一个到2015.12.31止 薪水给我开最高的老总，这的可以我辜负了他，感觉内疚。下面 我佩服的技术总监 豹哥，从头到脚都佩服，豹哥做事的态度，及对技术解决能力 抗压能力，一个真正意义上得技术总监，也是我的老大哥。还有一个 我现在的朋友及领导 宋宋。&lt;/p&gt;
+&lt;p&gt;####回顾2015&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;加入了创业公司 一腔热血 想着拿投资人的💰 你永远做不成事，如何让app养活自己才是王道。&lt;/li&gt;
+&lt;li&gt;聚贸 跨镜电商 ，还是缺乏表达。技术功底 有待提升！&lt;/li&gt;
+&lt;li&gt;记着帮助过你的人；宇哥,大明哥,越强,东震,雪飞,帮主,豹哥,浩克,娇娇,包二代,宋宋,阿德,肉包,小兰,水晶，笑笑…….&lt;/li&gt;
+&lt;li&gt;股票 基金 理财，定居杭州。&lt;/li&gt;
+&lt;li&gt;过于浮躁，不够坚持&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;####2016 要做得事&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;加入新公司 ，好好的干下去 坚持 耐心 表达 多沟通 不要任性&lt;/li&gt;
+&lt;li&gt;iOS 开发水平 去提高，看看 github 上得框架，整理 自己的 聊天框架，各种 公共控件 分享到github 上&lt;/li&gt;
+&lt;li&gt;整理自己的 开发资源，包括博客，文档，图片资源等 该放到百度云 上 都放上去&lt;/li&gt;
+&lt;li&gt;好好去体会 产品设计思维 ，UI App ps 设计思路&lt;/li&gt;
+&lt;li&gt;iOS 逆向开发 得弄起来，安全领域  本地数据 及接口请求，&lt;/li&gt;
+&lt;li&gt;阅读 音频(图书 音乐) 影视 ，用Google翻译app，App 有时间做起来  2016 至少上架3款 app，广告加入 Admob  广点通 艾德思齐（待定）百度 inMob&lt;/li&gt;
+&lt;li&gt;swift 学起来 ，OC 混编 试试 用起来，看看别人的框架 搭建，怎么样子 更为合理&lt;/li&gt;
+&lt;li&gt;CAR， 加油 fighting；&lt;/li&gt;
+&lt;li&gt;2次以上的户外&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;###归纳：money不够，赚！保持好自己的节奏。&lt;/p&gt;
+&lt;p&gt;  2015年是变化的一年，因为这个时代正在经历着前所未有的革新，无论是力量还是速度，2015年依旧没有变，因为那些我们相信的、我们坚持的东西，比如商业利益、道德底线、成长曲线都没有什么变化。有人说，变化，成就时光流逝之美，不变，始终是亘古的永恒。在我看来，2015年更像是斯里兰卡的那句名言，“世界上一成不变的东西，只有’任何事情都是在不断变化的’这条真理。”无论如何，2015年已经成为过去，即使它在激扬精彩。现在，不管你愿不愿意，2016年的第一缕阳光已经照在你的脸上，但愿这盛世，如你所愿！&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;时光流逝，这短短的2015就这么过了。在这一年里，我动荡了不少，从帝都北京来到了杭州，又换了几家公司，随着移动互联网大潮 起起落落。&lt;/p&gt;
+&lt;p&gt;毕业也有几年了，从国家电网 到 在阳光保险开发移动医疗APP，再到创业公司 我请客，再到跨境电商 聚贸，有所感叹吧。&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CocoaPods 安装说明及用法</title>
+    <link href="http://ihaodi.net/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/"/>
+    <id>http://ihaodi.net/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/</id>
+    <published>2015-11-09T14:52:38.000Z</published>
+    <updated>2016-03-18T15:29:33.000Z</updated>
+    
+    <content type="html">&lt;p&gt;一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。&lt;/p&gt;
+&lt;p&gt;##cocoaPods 说明&lt;br&gt;其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借助这个工具我们可以方便的使用类似AFNetWorking，SDWebImage等这样的开源库。一句 &lt;code&gt;pod install&lt;/code&gt; 命令 分分钟搞定。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&quot;https://cocoapods.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cocoaPods 官网&lt;/a&gt;;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/cocoapods/cocoapods&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cocoaPods 源码地址&lt;/a&gt;;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;##cocoaPods 安装&lt;br&gt;虽然网上是一大把，但本人还是给自己记下来吧！cocoaPods 安装需要ruby环境，mac os应该都支持ruby，没有支持的 google 怎么在mac os 安装ruby环境。&lt;/p&gt;
+&lt;p&gt;查看下当前ruby版本：打开终端输入 &lt;code&gt;ruby --version&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ ruby --version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;说明 ruby 已经安装&lt;/p&gt;
+&lt;p&gt;安装 cocoapods 命令&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ sudo gem install cocoapods&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ sudo gem install cocoapods  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Password:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;ERROR:  Could not find a valid gem &amp;apos;cocoapods&amp;apos; (&amp;gt;= 0), here is why:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;          Unable to download data from http://ruby.taobao.org/ - bad response Not Found 404 (http://ruby.taobao.org/specs.4.8.gz)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;原因是 ruby 的 taobao 源 找不到了 ，&lt;a href=&quot;http://ruby.taobao.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ruby.taobao.org&lt;/a&gt; 换成 &lt;a href=&quot;https://ruby.taobao.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://ruby.taobao.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;####如何换源&lt;br&gt;查看ruby 源  &lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ gem source -l&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*** CURRENT SOURCES ***&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http://ruby.taobao.org/&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ gem sources --remove http://ruby.taobao.org/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;http://ruby.taobao.org/ removed from sources&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ gem sources -a https://ruby.taobao.org/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;https://ruby.taobao.org/ added to sources&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ gem source -l&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;ok 搞定，再执行上面安装的命令 就可以安装啦&lt;br&gt;执行完之后 然后 执行下面命令 不出意外的话 就安装成功喽&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ pod setup&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;查看cocoapods安装版本&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;yyy:~ msl$ pod --version&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;0.39.0&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;恭喜你，安装完毕！！！&lt;/p&gt;
+&lt;p&gt;##cocoaPods 常用命令说明    &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新建Xcode工程 cd 到 工程根目录下    &lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///执行该命令 会在工程目录下生成 Podfile&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ pod init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;生成带 pods 工程，然后用 PodTest.xcworkspace 打开工程，这样依赖cocoapods工程就ok喽&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///会生成 PodTest.xcworkspace 、Podfile.lock、Pods&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$pod install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;修改 Podfile 添加你所需要的库，然后执行该下命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///清楚原来的pods配置内容，重新生成，并重新生成Podfile.lock&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$pod update&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///搜索你需要的 pods 库 例如&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$pod search AFNetworkig&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;pod install/update 缓慢时候可以用下面的操作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///以下不会升级CocoaPods的spec仓库&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$pod install --verbose --no-repo-update&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$pod update --verbose --no-repo-update&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;pod trunk 及相关在下篇给大家分享&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;##cocoaPods 版本控制&lt;/p&gt;
+&lt;p&gt;##Bridging Header: 在 Swift 中使用 Objective-C&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。&lt;/p&gt;
+&lt;p&gt;##cocoaPods 说明&lt;br&gt;其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借
+    
+    </summary>
+    
+      <category term="ios" scheme="http://ihaodi.net/categories/ios/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>几款好用的Xcode 插件</title>
+    <link href="http://ihaodi.net/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/"/>
+    <id>http://ihaodi.net/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/</id>
+    <published>2015-09-12T09:23:23.000Z</published>
+    <updated>2016-03-18T15:33:08.000Z</updated>
+    
+    <content type="html">&lt;p&gt;   随着IOS的发展，Xcode也不断升级，IOS9出来之后，Xcode已经升级到Xcode 7了。那么相应的Xcode插件也不断涌出，高效的插件才能提高开发者的开发效率；&lt;br&gt;   下面我就介绍下本人比较好用的插件：&lt;/p&gt;
+&lt;p&gt;####1.VVDocumenter&lt;br&gt;输入三个斜杠 “///“ 自动生成相应的注释代码形式&lt;/p&gt;
+&lt;p&gt;下载地址: &lt;a href=&quot;https://github.com/onevcat/VVDocumenter-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/onevcat/VVDocumenter-Xcode&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/onevcat/VVDocumenter-Xcode/master/ScreenShot.gif&amp;quot;&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;####2.XcodeColors&lt;br&gt;改变调试控制台颜色 ,经常跟&lt;a href=&quot;https://github.com/CocoaLumberjack/CocoaLumberjack&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CocoaLumberjack&lt;/a&gt;一块使用，如何使用github的说明文档中都详细说明了 &lt;/p&gt;
+&lt;p&gt;下载地址: &lt;a href=&quot;https://github.com/robbiehanson/XcodeColors&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/robbiehanson/XcodeColors&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../images/2015-09-13 10.16.17.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;####3.CocoaPods for Xcode&lt;br&gt;下载地址: &lt;a href=&quot;https://github.com/kattrali/cocoapods-xcode-plugin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/kattrali/cocoapods-xcode-plugin&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;####4.KSImageNamed-Xcode&lt;br&gt;下载地址: &lt;a href=&quot;https://github.com/ksuther/KSImageNamed-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/ksuther/KSImageNamed-Xcode&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;####5.DerivedData Exterminator&lt;br&gt;下载地址: &lt;a href=&quot;https://github.com/kattrali/deriveddata-exterminator&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/kattrali/deriveddata-exterminator&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;####6.XAlign&lt;br&gt;下载地址: &lt;a href=&quot;https://github.com/qfish/XAlign&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/qfish/XAlign&lt;/a&gt; &lt;/p&gt;
+&lt;p&gt;####7.ColorSense for Xcode&lt;br&gt;下载地址: &lt;a href=&quot;https://github.com/omz/ColorSense-for-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/omz/ColorSense-for-Xcode&lt;/a&gt; &lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;###当插件失效操作方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID&lt;/li&gt;
+&lt;li&gt;find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I{} defaults write {} DVTPlugInCompatibilityUUIDs -array-add 0420B86A-AA43-4792-9ED0-6FE0F2B16A13&lt;/li&gt;
+&lt;li&gt;defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-6.4&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   随着IOS的发展，Xcode也不断升级，IOS9出来之后，Xcode已经升级到Xcode 7了。那么相应的Xcode插件也不断涌出，高效的插件才能提高开发者的开发效率；&lt;br&gt;   下面我就介绍下本人比较好用的插件：&lt;/p&gt;
+&lt;p&gt;####1.VVDocumenter
+    
+    </summary>
+    
+      <category term="ios" scheme="http://ihaodi.net/categories/ios/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>ios 开发博客文章链接</title>
+    <link href="http://ihaodi.net/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/"/>
+    <id>http://ihaodi.net/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/</id>
+    <published>2015-09-07T02:04:05.000Z</published>
+    <updated>2016-03-18T15:29:26.000Z</updated>
+    
+    <content type="html">&lt;h4 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;OneV’s Den: &lt;a href=&quot;http://onevcat.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://onevcat.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;破船之家: &lt;a href=&quot;http://beyondvincent.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://beyondvincent.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;NSHipster: &lt;a href=&quot;http://nshipster.cn&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nshipster.cn&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Limboy 无网不剩: &lt;a href=&quot;http://blog.leezhong.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.leezhong.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;唐巧的技术博客: &lt;a href=&quot;http://blog.devtang.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.devtang.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Lex Tang: &lt;a href=&quot;http://lexrus.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lexrus.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;念茜的博客: &lt;a href=&quot;http://nianxi.net&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nianxi.net&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Xcode Dev: &lt;a href=&quot;http://blog.xcodev.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.xcodev.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Ted’s Homepage: &lt;a href=&quot;http://wufawei.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wufawei.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;txx’s blog: &lt;a href=&quot;http://blog.t-xx.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.t-xx.me&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Kevin Blog: &lt;a href=&quot;http://zhowkev.in&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://zhowkev.in&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;阿毛的蛋疼地: &lt;a href=&quot;http://www.xiangwangfeng.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.xiangwangfeng.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;亚庆的 Blog: &lt;a href=&quot;http://billwang1990.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://billwang1990.github.io&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Nonomori: &lt;a href=&quot;http://nonomori.farbox.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nonomori.farbox.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;言无不尽: &lt;a href=&quot;http://tang3w.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tang3w.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Wonderffee’s Blog: &lt;a href=&quot;http://wonderffee.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wonderffee.github.io&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;I’m TualatriX: &lt;a href=&quot;http://imtx.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://imtx.me&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;Cocoabit: &lt;a href=&quot;http://blog.cocoabit.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.cocoabit.com&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;nixzhu on scriptogr.am :&lt;a href=&quot;http://nixzhu.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://nixzhu.me&lt;/a&gt; &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://studentdeng.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://studentdeng.github.io&lt;/a&gt;  不会开机的男孩   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.inico.me&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.inico.me&lt;/a&gt;  Nico &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hufeng825.github.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://hufeng825.github.io&lt;/a&gt;  阿峰的技术窝窝&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://answerhuang.duapp.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://answerhuang.duapp.com&lt;/a&gt;  answer_huang&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.nswebfrog.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.nswebfrog.com/&lt;/a&gt;  webfrogs&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://joeyio.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://joeyio.com&lt;/a&gt;  代码手工艺人 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://gracelancy.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://gracelancy.com&lt;/a&gt;  Lancy’s Blog&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.imallen.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.imallen.com&lt;/a&gt;  I’m Allen&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://imi.im/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://imi.im/&lt;/a&gt;  Travis’ Blog    &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wangzz.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wangzz.github.io/&lt;/a&gt;  王中周的技术博客   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://jiajun.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://jiajun.org/&lt;/a&gt;  会写代码的猪   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wangkewei.cnblogs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://wangkewei.cnblogs.com/&lt;/a&gt;  克伟的博客   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cnblogs.com/biosli&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://cnblogs.com/biosli&lt;/a&gt;  摇滚诗人   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://geeklu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://geeklu.com/&lt;/a&gt;  Luke’s Homepage  &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://iiiyu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://iiiyu.com/&lt;/a&gt;  萧宸宇&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.heyuan110.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.heyuan110.com/&lt;/a&gt;  Yuan博客&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://shiningio.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://shiningio.com/&lt;/a&gt;  Shining IO&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.yifeiyang.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.yifeiyang.net/&lt;/a&gt;  YIFEIYANG–易飞扬的博客&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://koofrank.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://koofrank.com/&lt;/a&gt;  KooFrank’s Blog&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://helloitworks.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://helloitworks.com&lt;/a&gt;  hello it works&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://msching.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://msching.github.io/&lt;/a&gt;  码农人生    &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://yulingtianxia.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://yulingtianxia.com&lt;/a&gt;  玉令天下的Blog    &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.hotobear.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.hotobear.com/&lt;/a&gt;  不掏蜂窝的熊       &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://andelf.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://andelf.github.io/&lt;/a&gt;  猫·仁波切       &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://ivoryxiong.org/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://ivoryxiong.org/&lt;/a&gt;  煲仔饭       &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://adad184.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://adad184.com&lt;/a&gt;  里脊串的开发随笔      &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://chun.tips/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://chun.tips/&lt;/a&gt;  Chun Tips    &lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.callmewhy.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.callmewhy.com/&lt;/a&gt;  Why’s blog - 汪海的实验室      &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://tutuge.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://tutuge.me/&lt;/a&gt;  土土哥的技术Blog     &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.olinone.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.olinone.com/&lt;/a&gt;  庞海礁的个人空间   &lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://casatwy.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://casatwy.com/&lt;/a&gt;  Casa Taloyum   &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cnblogs.com/kenshincui/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.cnblogs.com/kenshincui/&lt;/a&gt;  Kenshin Cui’s Blog &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://suenblog.duapp.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://suenblog.duapp.com/&lt;/a&gt;  技术哥的博客 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.tanhao.me/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.tanhao.me/&lt;/a&gt;  老谭笔记 &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.coderyi.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.coderyi.com/&lt;/a&gt;  coderyi  &lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://blog.leichunfeng.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.leichunfeng.com&lt;/a&gt;  雷纯锋的技术博客&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;######还有 好的博客 文章 ，欢迎大家留言 分享&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;列表&quot;&gt;&lt;a href=&quot;#列表&quot; class=&quot;headerlink&quot; title=&quot;列表&quot;&gt;&lt;/a&gt;列表&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;OneV’s Den: &lt;a href=&quot;http://onevcat.com&quot; target=&quot;_blank&quot; rel=&quot;ex
+    
+    </summary>
+    
+      <category term="ios" scheme="http://ihaodi.net/categories/ios/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>my first 博客</title>
+    <link href="http://ihaodi.net/2015/09/04/2015-09-04-my-first-bo-ke/"/>
+    <id>http://ihaodi.net/2015/09/04/2015-09-04-my-first-bo-ke/</id>
+    <published>2015-09-04T06:41:06.000Z</published>
+    <updated>2016-03-18T15:29:25.000Z</updated>
+    
+    <content type="html">&lt;pre&gt;&lt;code&gt;突然想写点东西，不是为了别的，只是觉得写代码也有几个年头了 应该留点什么。
+我是不是应该重新审视自己的业务，自己的技术水平。
+&lt;/code&gt;&lt;/pre&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;pre&gt;&lt;code&gt;突然想写点东西，不是为了别的，只是觉得写代码也有几个年头了 应该留点什么。
+我是不是应该重新审视自己的业务，自己的技术水平。
+&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
