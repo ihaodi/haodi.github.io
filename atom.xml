@@ -261,6 +261,377 @@
   </entry>
   
   <entry>
+    <title>IOS 编程风格及命名规范</title>
+    <link href="http://ihaodi.net/2015/09/09/2015-09-09-ios-bian-cheng-feng-ge-ji-ming-ming-gui-fan/"/>
+    <id>http://ihaodi.net/2015/09/09/2015-09-09-ios-bian-cheng-feng-ge-ji-ming-ming-gui-fan/</id>
+    <published>2015-09-09T05:32:00.000Z</published>
+    <updated>2016-03-18T15:29:24.000Z</updated>
+    
+    <content type="html">&lt;p&gt;##目的&lt;/p&gt;
+&lt;p&gt;统一规范Xcode编辑环境下 Object-C 的编程风格和标准，尽量遵循苹果公司发布代码中的主流代码风格。&lt;/p&gt;
+&lt;p&gt;###Xcode 一般工程目录结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CarPurifier
+-README.md
+-CarPurifier
+--CarPurifierApi
+--Resources
+--Macro
+--General
+--Helpers
+--Models
+--Sections
+---UserInfomationVCtrl
+.
+.
+--Vendors
+--Utility
+--Services
+.
+.
+.
+Pods
+-Podfile
+.
+.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;###文件及模块命名及结构管理&lt;/p&gt;
+&lt;p&gt;文件夹及文件创建 相应字母必须大写. 例: UserInfomationVCtrl。&lt;/p&gt;
+&lt;p&gt;禁止在项目中的任何地方，包括文件名、目录名、逻辑目录名、项目名，使用空格或中文字符。&lt;/p&gt;
+&lt;p&gt;资源文件plist，image，audio，video，buddle等相关资源 一律放入Resources文件夹，并建立对应文件夹.如有其他特殊情况，在相关文件下 做好备注。&lt;/p&gt;
+&lt;p&gt;第三方的类库/SDK，如UMeng、WeiboSDK、WeixinSDK及相关第三方开源库 等专门存放在固定文件夹Vendors中，每个第三方库应该有属于自己的文件夹&lt;/p&gt;
+&lt;p&gt;自定义公用类 放入 General 文件夹 命名方式 例：ADMainButton，ADWalkthroughTextField，AD代表阿迪的首字母表示 构建者&lt;/p&gt;
+&lt;p&gt;项目APP公用定义 如枚举、消息通知、宏 放入 Macro文件夹&lt;/p&gt;
+&lt;p&gt;备注:其他根据项目需求而定&lt;/p&gt;
+&lt;p&gt;###书写规范&lt;/p&gt;
+&lt;h5 id=&quot;Xcode-工程&quot;&gt;&lt;a href=&quot;#Xcode-工程&quot; class=&quot;headerlink&quot; title=&quot;Xcode 工程&quot;&gt;&lt;/a&gt;Xcode 工程&lt;/h5&gt;&lt;p&gt;物理文件应该与Xcode工程文件保持同步来避免文件扩张。任何Xcode分组的创建应该在文件系统的文件体现。代码不仅是根据类型来分组，而且还可以根据功能来分组，这样代码更加清晰。&lt;/p&gt;
+&lt;p&gt;尽可能在target的Build Settings打开”Treat Warnings as Errors，和启用以下additional warnings。如果你需要忽略特殊的警告，使用Clang’s pragma feature。&lt;/p&gt;
+&lt;h5 id=&quot;代码组织&quot;&gt;&lt;a href=&quot;#代码组织&quot; class=&quot;headerlink&quot; title=&quot;代码组织&quot;&gt;&lt;/a&gt;代码组织&lt;/h5&gt;&lt;p&gt;   在函数分组和protocol/delegate实现中使用#pragma mark -来分类方法，要遵循以下一般结构：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;28&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;29&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;30&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;     #pramma mark - Lifecycle&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     - (instancetype)init &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - (void)dealloc &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - (void)viewDidLoad &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - (void)viewWillAppear:(BOOL)animated &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  - (void)didReceiveMemoryWarning &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  #pragma mark - Custom Accessors  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     - (void)setCustomProperty:(id)value &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (id)customProperty &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - IBActions  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (IBAction)submitData:(id)sender &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - Public  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)publicMethod &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - Private  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (void)privateMethod &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - Protocol conformance  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - UITextFieldDelegate  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - UITableViewDataSource  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - UITableViewDelegate &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - NSCopying  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (id)copyWithZone:(NSZone *)zone &amp;#123;&amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#pragma mark - NSObject  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (NSString *)description &amp;#123;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;Whitespace&quot;&gt;&lt;a href=&quot;#Whitespace&quot; class=&quot;headerlink&quot; title=&quot;Whitespace&quot;&gt;&lt;/a&gt;Whitespace&lt;/h5&gt;&lt;p&gt;对齐方式 就按 Xcode 默认缩进方式吧&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;包含 依赖文件的时候，最好 分清晰&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;///系统框架&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;Foundation/Foundation.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;StoreKit/StoreKit.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;///pods&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;lt;AFNetworking/AFNetworking.h&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;     &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;///&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;SomeDependency.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;#import &amp;quot;SomeOtherDependency.h&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;@interface UserLoginCtrl ()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h5 id=&quot;括号&quot;&gt;&lt;a href=&quot;#括号&quot; class=&quot;headerlink&quot; title=&quot;括号&quot;&gt;&lt;/a&gt;括号&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;方法大括号和其他大括号(if/else/switch/while 等.)总是在同一行语句打开但在新行中关闭&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(condition){
+///do something
+}
+else{
+///do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(condition)
+{
+///do something
+}
+else
+{
+///do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;注释&quot;&gt;&lt;a href=&quot;#注释&quot; class=&quot;headerlink&quot; title=&quot;注释&quot;&gt;&lt;/a&gt;注释&lt;/h5&gt;&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /**
+@brief 方法或变量名说明
+@param 参数1说明
+@param 参数2说明
+…
+@return 若方法又返回值则对返回值作说明
+*/
++ (NSString *)uuid:(NSString *)param;
+
+
+///用户名
+@property (nonatomic, strong) ADWalkthroughTextField  *usernameField;
+
+///头像 图标
+@property (nonatomic, strong) UIImageView *headIcon;
+
+或者
+/*
+ * 密码
+ */
+@property (nonatomic, strong) UITextField  *passwordField;
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;备注: xcode 注释插件  &lt;a href=&quot;https://github.com/onevcat/VVDocumenter-Xcode&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/onevcat/VVDocumenter-Xcode&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;命名&quot;&gt;&lt;a href=&quot;#命名&quot; class=&quot;headerlink&quot; title=&quot;命名&quot;&gt;&lt;/a&gt;命名&lt;/h5&gt;&lt;p&gt;命名尽量简洁,但不能因为简洁而使命名难以理解&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UIButton *settingButton;
+UILabel *titleLabel;
+UITextField *detailTextField;
+UITextView *valueTextView;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UIButton *settingBtn; 或者 UIButton *settingBut;
+UILabel *titleLbl; 或者 UIButton *titleLab;
+UITextField *detailField;
+UITextView *valueTView;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;常量命名规则（驼峰式命名规则），所有的单词首字母大写和加上与类名有关的前缀:&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CGFloat const GeneralWalkthroughStandardOffset                  = 15.0;
+
+static CGFloat const GeneralWalkthroughSecondaryButtonHeight    = 33.0;
+
+NSTimeInterval const GeneralWalkthroughAnimationDuration        = 0.3f;
+
+UIEdgeInsets const CreateAccountBackButtonPadding               = {1.0, 0.0, 0.0, 0.0};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CGFloat const tandardOffset          = 15.0;
+
+static CGFloat const ButtonHeight    = 33.0;
+
+NSTimeInterval const Duration        = 0.3f;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;属性也是使用驼峰式，但首单词的首字母小写:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@property (strong, nonatomic) NSString *descriptiveVariableName; 
+或者 @property (copy, nonatomic) NSString *descriptiveVariableName;  
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;注：属性的声明和实现，尽量避免书写@synthesize，如果用到@synthesize，要紧接着@implementation书写，不要空行&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;当使用属性时，实例变量应该使用self.来访问和改变。这就意味着所有属性将会视觉效果不同，因为它们前面都有self.。&lt;br&gt;但有一个特例：在初始化方法里，实例变量(例如，_variableName)应该直接被使用来避免getters/setters潜在的副作用。&lt;br&gt;局部变量不应该包含下划线。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;成员变量尽量写在@implementation内部，有必要对外暴露时(或者 .m 中@interface)，才写在@interface下&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;对于声明 NSString的属性，还是用 copy 特性，原因度娘 谷歌。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;方法&quot;&gt;&lt;a href=&quot;#方法&quot; class=&quot;headerlink&quot; title=&quot;方法&quot;&gt;&lt;/a&gt;方法&lt;/h5&gt;&lt;p&gt;写方法的风格 例如 Apple 的风格： - (void)addSubview:(UIView *)view;&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- (NSString *)name;
+- (void)setExampleText:(NSString *)text image:(UIImage *)image;  
+- (void)sendAction:(SEL)aSelector to:(id)anObject forAllCells:(BOOL)flag;  
+- (id)viewWithTag:(NSInteger)tag;  
+- (instancetype)initWithWidth:(CGFloat)width height:(CGFloat)height;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- (NSString *)getName;
+- (void)setT:(NSString *)text i:(UIImage *)image;  
+- (void)sendAction:(SEL)aSelector :(id)anObject :(BOOL)flag;  
+- (id)taggedView:(NSInteger)tag;  
+- (instancetype)initWithWidth:(CGFloat)width andHeight:(CGFloat)height;  
+- (instancetype)initWith:(int)width and:(int)height;  // Never do this.
+&lt;/code&gt;&lt;/pre&gt;&lt;h5 id=&quot;点语法&quot;&gt;&lt;a href=&quot;#点语法&quot; class=&quot;headerlink&quot; title=&quot;点语法&quot;&gt;&lt;/a&gt;点语法&lt;/h5&gt;&lt;p&gt;修改属性 : setter 和 getter&lt;/p&gt;
+&lt;p&gt;Apple文档:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NSInteger arrayCount = [self.array count];
+view.backgroundColor = [UIColor orangeColor];
+[UIApplication sharedApplication].delegate;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NSInteger arrayCount = self.array.count;
+[view setBackgroundColor:[UIColor orangeColor]];
+UIApplication.sharedApplication.delegate;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####简写&lt;/p&gt;
+&lt;p&gt;NSDictionary、NSArray和NSNumber 的简写&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NSArray *names = @[@&amp;quot;Brian&amp;quot;, @&amp;quot;Matt&amp;quot;, @&amp;quot;Chris&amp;quot;, @&amp;quot;Alex&amp;quot;, @&amp;quot;Steve&amp;quot;, @&amp;quot;Paul&amp;quot;];  
+NSDictionary *productManagers = @{@&amp;quot;iPhone&amp;quot;: @&amp;quot;Kate&amp;quot;, @&amp;quot;iPad&amp;quot;: @&amp;quot;Kamal&amp;quot;, @&amp;quot;Mobile Web&amp;quot;: @&amp;quot;Bill&amp;quot;};  
+NSNumber *shouldUseLiterals = @YES;  
+NSNumber *buildingStreetNumber = @10018;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NSArray *names = [NSArray arrayWithObjects:@&amp;quot;Brian&amp;quot;, @&amp;quot;Matt&amp;quot;, @&amp;quot;Chris&amp;quot;, @&amp;quot;Alex&amp;quot;, @&amp;quot;Steve&amp;quot;, @&amp;quot;Paul&amp;quot;, nil];  
+NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @&amp;quot;Kate&amp;quot;, @&amp;quot;iPhone&amp;quot;, @&amp;quot;Kamal&amp;quot;, @&amp;quot;iPad&amp;quot;, @&amp;quot;Bill&amp;quot;,     @&amp;quot;Mobile Web&amp;quot;, nil];  
+NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];  
+NSNumber *buildingStreetNumber = [NSNumber numberWithInteger:10018]; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####常量定义&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;局部 定义（当前文件）
+CGFloat const CreateAccountIOS7StatusBarOffset        = 20.0;
+NSString *const UMAPP_KEY =@&amp;quot;55d3de82e0f55a54fd004dad&amp;quot;;
+
+全局 定义（重复使用）
+static CGFloat   const CreateAccountIOS7StatusBarOffset        = 20.0;
+static NSString *const UMAPP_KEY =@&amp;quot;55d3de82e0f55a54fd004dad&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#define CreateAccountIOS7StatusBarOffset 20.0;
+#define UMAPP_KEY @&amp;quot;55d3de82e0f55a54fd004dad&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####枚举类型 定义&lt;/p&gt;
+&lt;p&gt;当使用enum时，推荐使用新的固定基本类型规格，因为它有更强的类型检查和代码补全&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;typedef NS_ENUM(NSInteger, MBProgressHUDAnimation) {
+    /** Opacity animation */
+    MBProgressHUDAnimationFade,
+    /** Opacity + scale animation */
+    MBProgressHUDAnimationZoom,
+    MBProgressHUDAnimationZoomOut = MBProgressHUDAnimationZoom,
+    MBProgressHUDAnimationZoomIn
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
+    UIViewAutoresizingNone                 = 0,
+    UIViewAutoresizingFlexibleLeftMargin   = 1 &amp;lt;&amp;lt; 0,
+    UIViewAutoresizingFlexibleWidth        = 1 &amp;lt;&amp;lt; 1,
+    UIViewAutoresizingFlexibleRightMargin  = 1 &amp;lt;&amp;lt; 2,
+    UIViewAutoresizingFlexibleTopMargin    = 1 &amp;lt;&amp;lt; 3,
+    UIViewAutoresizingFlexibleHeight       = 1 &amp;lt;&amp;lt; 4,
+    UIViewAutoresizingFlexibleBottomMargin = 1 &amp;lt;&amp;lt; 5
+};
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;typedef NS_ENUM(NSInteger, RWTGlobalConstants) {  
+    RWTPinSizeMin = 1,  
+    RWTPinSizeMax = 5,  
+    RWTPinCountMin = 100,  
+    RWTPinCountMax = 500,  
+};     
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;注: 当用到 CoreFoundation C code 或者 C++ code 时，可以使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enum GlobalConstants {
+    kMaxPinSize = 5,
+    kMaxPinCount = 500;
+ };
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#####条件判断&lt;/p&gt;
+&lt;p&gt;BOOL类型: Objective-C使用YES和NO。因为true和false应该只在CoreFoundation，C或C++代码使用。既然nil解析成NO，所以没有必要在条件语句比较。不要拿某样东西直接与YES比较，因为YES被定义为1和一个BOOL能被设置为8位。&lt;/p&gt;
+&lt;p&gt;建议写法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(isBool){
+/// do something
+}
+
+if(![String isEqualToString:@&amp;quot;string&amp;quot; ]){
+/// do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;注: 如果BOOL属性的名字是一个形容词，属性就能忽略”is”前缀，但要指定get访问器的惯用名称&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@property (assign, getter=isEditable) BOOL editable;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Object 类型: 当判断为nil 时&lt;/p&gt;
+&lt;p&gt;建议写法 &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(object == nil){
+/// do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(object){
+/// do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;判端 delegate 是否存在时&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if([self.delegate conformsToProtocol:@protocol(RESideMenuDelegate)] &amp;amp;&amp;amp; 
+[self.delegate respondsToSelector:@selector(sideMenu:willShowMenuViewController:)){
+/// do something
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(delegate){
+/// do something
+}    
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;当条件只中带有 return 时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (!error) {  
+ return success;  
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (!error)  
+ return success;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;或者&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (!error) return success; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####三元操作符&lt;/p&gt;
+&lt;p&gt;当需要提高代码的清晰性和简洁性时，三元操作符?:才会使用。单个条件求值常常需要它。多个条件求值时，如果使用if语句或重构成实例变量时，代码会更加易读。一般来说，最好使用三元操作符是在根据条件来赋值的情况下。&lt;/p&gt;
+&lt;p&gt;Non-boolean的变量与某东西比较，加上括号()会提高可读性。如果被比较的变量是boolean类型，那么就不需要括号。&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NSInteger value = 5;  
+result = (value != 0) ? x : y;  
+BOOL isHorizontal = YES;  
+result = isHorizontal ? x : y;  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;result = a &amp;gt; b ? x = c &amp;gt; d ? c : d : y; 
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####Init方法&lt;/p&gt;
+&lt;p&gt;Init方法应该遵循Apple生成代码模板的命名规则，返回类型应该使用instancetype而不是id。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- (instancetype)init {  
+  self = [super init];  
+  if (self) {  
+    // ...  
+  }  
+  return self;  
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####类构造方法&lt;br&gt;同 Init 方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@interface Airplane 
++ (instancetype)initWithType:(ADViewTpye)type
+
+- (instancetype)initWithLeftViewImage:(UIImage *)image;
+@end  
+&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
+&lt;li&gt;注: 可以看看 &lt;a href=&quot;http://NSHipster.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://NSHipster.com&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;#####Dealloc Methods&lt;/p&gt;
+&lt;p&gt;Dealloc 方法在ARC 下 已经不再需要，但在某些情况下必须使用以除去observers，KVO等&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+ }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####CGRect函数&lt;/p&gt;
+&lt;p&gt;当访问CGRect里的x, y, width, 或 height时，应该使用CGGeometry函数而不是直接通过结构体来访问。引用Apple的CGGeometry：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在这个参考文档中所有的函数，接受CGRect结构体作为输入，在计算它们结果时隐式地标准化这些rectangles。因此，你的应用程序应该避免直接访问和修改保存在CGRect数据结构中的数据。相反，使用这些函数来操纵rectangles和获取它们的特性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CGRect frame = self.view.frame;  
+CGFloat x = CGRectGetMinX(frame);  
+CGFloat y = CGRectGetMinY(frame);  
+CGFloat width = CGRectGetWidth(frame);  
+CGFloat height = CGRectGetHeight(frame);  
+CGRect frame = CGRectMake(0.0, 0.0, width, height);  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CGRect frame = self.view.frame;  
+CGFloat x = frame.origin.x;  
+CGFloat y = frame.origin.y;  
+CGFloat width = frame.size.width;  
+CGFloat height = frame.size.height;  
+CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####Golden Path&lt;/p&gt;
+&lt;p&gt;当使用条件语句编码时，左手边的代码应该是”golden” 或 “happy”路径。也就是不要嵌套if语句，多个返回语句也是OK。&lt;/p&gt;
+&lt;p&gt;建议写法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- (void)someMethod {
+    if (![someOther boolValue]) {  
+        return;
+    }  
+    //Do something important  
+}  
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;#####Error handling&lt;/p&gt;
+&lt;p&gt;#####Singletons 单例&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+ (instancetype)sharedInstance {
+    static id sharedInstance = nil;
+
+    static dispatch_once_t onceToken;
+    dispatch_once(&amp;amp;onceToken, ^{
+    sharedInstance = [[self alloc] init];
+    });
+
+    return sharedInstance;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;####其他 Object-C 风格&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/raywenderlich/objective-c-style-guide&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Robots &amp;amp; Pencils&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/NYTimes/objective-c-style-guide&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;New York Times&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://google-styleguide.googlecode.com/svn/trunk/objcguide.xml&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Google&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/github/objective-c-style-guide&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://trac.adium.im/wiki/CodingStyle&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Adium&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://gist.github.com/soffes/812796&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Sam Soffes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://cocoadevcentral.com/articles/000082.php&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CocoaDevCentral&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.cimgf.com/zds-code-style-guide/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Marcus Zarra&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##目的&lt;/p&gt;
+&lt;p&gt;统一规范Xcode编辑环境下 Object-C 的编程风格和标准，尽量遵循苹果公司发布代码中的主流代码风格。&lt;/p&gt;
+&lt;p&gt;###Xcode 一般工程目录结构&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CarPurifier
+    
+    </summary>
+    
+      <category term="ios" scheme="http://ihaodi.net/categories/ios/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>ios 开发博客文章链接</title>
     <link href="http://ihaodi.net/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/"/>
     <id>http://ihaodi.net/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/</id>
