@@ -71,7 +71,7 @@
 在ma">
 <meta property="og:image" content="http://ihaodi.net/../images/2016-03-186.05.51.png">
 <meta property="og:image" content="http://ihaodi.net/../images/屏幕快照 2016-03-18 下午8.32.03.png">
-<meta property="og:updated_time" content="2016-03-21T03:23:43.000Z">
+<meta property="og:updated_time" content="2016-03-21T03:36:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="coding.net上搭建hexo博客">
 <meta name="twitter:description" content="在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到唐巧的一篇文章 搭建hexo博客。好吧，那就玩一下~ (备注 coding是收费的啊，实在不行，去国外的github)
@@ -919,15 +919,13 @@ function showTime(Counter) {
 		query.find({
 			success: function(results) {
 				if (results.length == 0) {
-// 					var content = $(document.getElementById(url)).text() + ': 0';
-					var content = $(document.getElementById(url)).text();
+					var content = $(document.getElementById(url)).text() + ': 0';
 					$(document.getElementById(url)).text(content);
 					return;
 				}
 				for (var i = 0; i < results.length; i++) {
 					var object = results[i];
-// 					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
-					var content = '阅读次数：'+ object.get('time');
+					var content = $(document.getElementById(url)).text() + ': ' + object.get('time');
 					$(document.getElementById(url)).text(content);
 				}
 			},
@@ -953,8 +951,7 @@ function addCount(Counter) {
 				counter.increment("time");
 				counter.save(null, {
 					success: function(counter) {
-// 						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
-												var content ='阅读次数：'+ counter.get('time') ;
+						var content = $(document.getElementById(url)).text() + ': ' + counter.get('time');
 						$(document.getElementById(url)).text(content);
 					},
 					error: function(counter, error) {
@@ -969,8 +966,7 @@ function addCount(Counter) {
 				newcounter.save(null, {
 					success: function(newcounter) {
 					    console.log("newcounter.get('time')="+newcounter.get('time'));
-// 						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
-						var content = '阅读次数：' + newcounter.get('time');
+						var content = $(document.getElementById(url)).text() + ': ' + newcounter.get('time');
 						$(document.getElementById(url)).text(content);
 					},
 					error: function(newcounter, error) {
