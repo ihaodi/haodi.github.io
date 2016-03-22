@@ -41,10 +41,12 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
+
+  
 
 
   <link rel="alternate" href="/atom.xml" title="好迪的博客" type="application/atom+xml" />
@@ -59,25 +61,22 @@
 
 
 
-<meta name="description" content="一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。
-##cocoaPods 说明其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借助这个工具我们可以方便的使用类似AFNetWorking，SDWebImage等这样的开源库。一句 pod install 命令 分分钟搞定。
-
-c">
+<meta name="description" content="最近碰到一个用户 在使用我们 微链App 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。
+对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较
+iOS原生API系统扫描的效率是最">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CocoaPods 安装说明及用法">
-<meta property="og:url" content="http://ihaodi.net/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/index.html">
+<meta property="og:title" content="iOS QRcode识别及相册图片二维码读取识别">
+<meta property="og:url" content="http://ihaodi.net/2016/03/21/iOS-QRcode识别及相册图片二维码识别/index.html">
 <meta property="og:site_name" content="好迪的博客">
-<meta property="og:description" content="一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。
-##cocoaPods 说明其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借助这个工具我们可以方便的使用类似AFNetWorking，SDWebImage等这样的开源库。一句 pod install 命令 分分钟搞定。
-
-c">
-<meta property="og:updated_time" content="2016-03-18T15:29:33.000Z">
+<meta property="og:description" content="最近碰到一个用户 在使用我们 微链App 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。
+对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较
+iOS原生API系统扫描的效率是最">
+<meta property="og:updated_time" content="2016-03-22T08:53:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CocoaPods 安装说明及用法">
-<meta name="twitter:description" content="一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。
-##cocoaPods 说明其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借助这个工具我们可以方便的使用类似AFNetWorking，SDWebImage等这样的开源库。一句 pod install 命令 分分钟搞定。
-
-c">
+<meta name="twitter:title" content="iOS QRcode识别及相册图片二维码读取识别">
+<meta name="twitter:description" content="最近碰到一个用户 在使用我们 微链App 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。
+对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较
+iOS原生API系统扫描的效率是最">
 
 
 
@@ -95,7 +94,7 @@ c">
   };
 </script>
 
-  <title> CocoaPods 安装说明及用法 | 好迪的博客 </title>
+  <title> iOS QRcode识别及相册图片二维码读取识别 | 好迪的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -245,7 +244,7 @@ c">
             
             
               
-                CocoaPods 安装说明及用法
+                iOS QRcode识别及相册图片二维码读取识别
               
             
           </h1>
@@ -257,8 +256,8 @@ c">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-11-09T22:52:38+08:00" content="2015-11-09">
-              2015-11-09
+            <time itemprop="dateCreated" datetime="2016-03-21T11:44:03+08:00" content="2016-03-21">
+              2016-03-21
             </time>
           </span>
 
@@ -287,8 +286,8 @@ c">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/" itemprop="commentsCount"></span>
+                <a href="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/21/iOS-QRcode识别及相册图片二维码识别/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -298,7 +297,7 @@ c">
 
           
           
-             <span id="/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/" class="leancloud_visitors" data-flag-title="CocoaPods 安装说明及用法">
+             <span id="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/" class="leancloud_visitors" data-flag-title="iOS QRcode识别及相册图片二维码读取识别">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -319,51 +318,33 @@ c">
       
 
       
-        <p>一直想更新博客来着，可就是可以为自己找到各种各样的理由去拖延…难道这是典型的拖延症吗？好吧 言归正传，和大家分享下 cocoapods的详细安装方法及用法。</p>
-<p>##cocoaPods 说明<br>其实对我个人而言，cocoaPods 只是一个公共库的依赖工具，借助这个工具我们可以方便的使用类似AFNetWorking，SDWebImage等这样的开源库。一句 <code>pod install</code> 命令 分分钟搞定。</p>
+        <p>最近碰到一个用户 在使用我们 <a href="https://itunes.apple.com/hk/app/wei-lian-chuang-ye-she-jiao/id944154493?l=zh&amp;mt=8" target="_blank" rel="external">微链App</a> 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。</p>
+<p>对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较</p>
+<h2 id="iOS原生API"><a href="#iOS原生API" class="headerlink" title="iOS原生API"></a>iOS原生API</h2><p>系统扫描的效率是最高，反正包括各种你见过的没见过的码，但是有一点我不是很清楚 iOS7 扫描二维码可以，但从相册照片读取二维码苹果不支持，必须是iOS8+。<br><a href="https://github.com/yannickl/QRCodeReaderViewController" target="_blank" rel="external">https://github.com/yannickl/QRCodeReaderViewController</a></p>
+<p><a href="https://github.com/zhengjinghua/MQRCodeReaderViewController" target="_blank" rel="external">https://github.com/zhengjinghua/MQRCodeReaderViewController</a></p>
+<p>这两个例子已经写的非常清楚了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">// 对于识别率的精度</span><br></pre></td></tr></table></figure>
+<h2 id="ZXing-和-ZBar"><a href="#ZXing-和-ZBar" class="headerlink" title="ZXing 和 ZBar"></a>ZXing 和 ZBar</h2><p>具体代码 我就不在这里写了，Demo里 都写了，而且百度谷歌千篇一律，说说ZXing的一些用到的特点：</p>
+<ul>
+<li>对那种小圆点的二维码 ZXing和原生API 都是支持的，而ZBar 貌似不是支持的，反正我没搞定。</li>
+<li>ZXing 现在还在继续维护 ZBar 而已经停止了</li>
+<li>ZXing 可以识别图片中多个二维码</li>
+</ul>
+<p>ZBar中的识别率 本人觉得还是比较低</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//ZBar 中对 图片中二维码 识别</span><br><span class="line">	UIImage * aImage = #所获取的图片#</span><br><span class="line">	ZBarReaderController *read = [ZBarReaderController new];</span><br><span class="line">    CGImageRef cgImageRef = aImage.CGImage;</span><br><span class="line">    ZBarSymbol* symbol = nil;</span><br><span class="line">    for(symbol in [read scanImage:cgImageRef])&#123;</span><br><span class="line">        qrResult = symbol.data ;</span><br><span class="line">        NSLog(@&quot;qrResult = symbol.data %@&quot;,qrResult);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ZXing 对圆点二维码的支持 及能够识别图片中多个二维码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// ZXing 只识别单个二维码</span><br><span class="line">UIImage *image = #需要识别的图片# </span><br><span class="line">ZXCGImageLuminanceSource *source = [[ZXCGImageLuminanceSource alloc] initWithCGImage:image.CGImage]; </span><br><span class="line">  ZXHybridBinarizer *binarizer = [[ZXHybridBinarizer alloc] initWithSource: source];</span><br><span class="line">   ZXBinaryBitmap *bitmap = [[ZXBinaryBitmap alloc] initWithBinarizer:binarizer];</span><br><span class="line">   </span><br><span class="line">   NSError *error;</span><br><span class="line">   </span><br><span class="line">   id&lt;ZXReader&gt; reader;   </span><br><span class="line">   if (NSClassFromString(@&quot;ZXMultiFormatReader&quot;)) &#123;</span><br><span class="line">       reader = [NSClassFromString(@&quot;ZXMultiFormatReader&quot;) performSelector:@selector(reader)];</span><br><span class="line">   &#125;</span><br><span class="line">   ZXDecodeHints *_hints = [ZXDecodeHints hints];</span><br><span class="line">   ZXResult *result = [reader decode:bitmap hints:_hints error:&amp;error];</span><br><span class="line">   if (result == nil) &#123;</span><br><span class="line">       NSLog(@&quot;无QRCode&quot;);</span><br><span class="line">       return;</span><br><span class="line">   &#125;</span><br><span class="line">   NSLog(@&quot;QRCode = %d，%@&quot;，result.barcodeFormat，result.text);</span><br></pre></td></tr></table></figure>
+<p>ZXing 识别图片中多个二维码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">UIImage *image = #需要识别的图片# </span><br><span class="line">ZXCGImageLuminanceSource *source = [[ZXCGImageLuminanceSource alloc] initWithCGImage:image.CGImage]; </span><br><span class="line">  ZXHybridBinarizer *binarizer = [[ZXHybridBinarizer alloc] initWithSource: source];</span><br><span class="line">  ZXBinaryBitmap *bitmap = [[ZXBinaryBitmap alloc] initWithBinarizer:binarizer];</span><br><span class="line">  ZXDecodeHints *hints = [ZXDecodeHints hints];</span><br><span class="line"></span><br><span class="line">   NSError *error = nil;</span><br><span class="line">   ZXQRCodeMultiReader * reader2 = [[ZXQRCodeMultiReader alloc]init];</span><br><span class="line">   NSArray *rs = [reader2 decodeMultiple:bitmap error:&amp;error];</span><br><span class="line">   // 或者  NSArray *rs =[reader2 decodeMultiple:bitmap hints:hints error:&amp;error];</span><br><span class="line">   NSLog(@&quot; err = %@&quot;,error);</span><br><span class="line">   for (ZXResult *resul in rs) &#123;</span><br><span class="line">       NSLog(@&quot; ---%@&quot;,resul.text);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>后面 就看你需求了</p>
+<h2 id="iOS-WebView中-长按二维码的识别"><a href="#iOS-WebView中-长按二维码的识别" class="headerlink" title="iOS WebView中 长按二维码的识别"></a>iOS WebView中 长按二维码的识别</h2><p>思路: </p>
 <ol>
-<li><a href="https://cocoapods.org" target="_blank" rel="external">cocoaPods 官网</a>;</li>
-<li><a href="https://github.com/cocoapods/cocoapods" target="_blank" rel="external">cocoaPods 源码地址</a>;</li>
+<li>长按webView 的过程中 截屏，再去解析是否有二维码，但是有个缺点 就是 万一截了一个 一半的二维码 那就无解了。</li>
+<li>在webview中 注入获取点击图片的JS 获取图片，再解析。缺点：万一图片过大 需要下载，势必会影响用户体验。</li>
+<li>webview 加载完成图片之后，图片势必缓存在 webview里，有什么方法可以获取webview 里的缓存图片。</li>
 </ol>
-<p>##cocoaPods 安装<br>虽然网上是一大把，但本人还是给自己记下来吧！cocoaPods 安装需要ruby环境，mac os应该都支持ruby，没有支持的 google 怎么在mac os 安装ruby环境。</p>
-<p>查看下当前ruby版本：打开终端输入 <code>ruby --version</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ ruby --version</span><br><span class="line">ruby 2.0.0p481 (2014-05-08 revision 45883) [universal.x86_64-darwin14]</span><br><span class="line">yyy:~ msl$</span><br></pre></td></tr></table></figure>
-<p>说明 ruby 已经安装</p>
-<p>安装 cocoapods 命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo gem install cocoapods</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ sudo gem install cocoapods  </span><br><span class="line">Password:</span><br><span class="line">ERROR:  Could not find a valid gem &apos;cocoapods&apos; (&gt;= 0), here is why:</span><br><span class="line">          Unable to download data from http://ruby.taobao.org/ - bad response Not Found 404 (http://ruby.taobao.org/specs.4.8.gz)</span><br><span class="line">yyy:~ msl$</span><br></pre></td></tr></table></figure>
-<p>原因是 ruby 的 taobao 源 找不到了 ，<a href="http://ruby.taobao.org" target="_blank" rel="external">http://ruby.taobao.org</a> 换成 <a href="https://ruby.taobao.org" target="_blank" rel="external">https://ruby.taobao.org</a></p>
-<p>####如何换源<br>查看ruby 源  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ gem source -l</span><br><span class="line">*** CURRENT SOURCES ***</span><br><span class="line"></span><br><span class="line">http://ruby.taobao.org/</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ gem sources --remove http://ruby.taobao.org/</span><br><span class="line">http://ruby.taobao.org/ removed from sources</span><br><span class="line">yyy:~ msl$ gem sources -a https://ruby.taobao.org/</span><br><span class="line">https://ruby.taobao.org/ added to sources</span><br><span class="line">yyy:~ msl$ gem source -l</span><br></pre></td></tr></table></figure>
-<p>ok 搞定，再执行上面安装的命令 就可以安装啦<br>执行完之后 然后 执行下面命令 不出意外的话 就安装成功喽</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ pod setup</span><br></pre></td></tr></table></figure>
-<p>查看cocoapods安装版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yyy:~ msl$ pod --version</span><br><span class="line">0.39.0</span><br></pre></td></tr></table></figure>
-<p>恭喜你，安装完毕！！！</p>
-<p>##cocoaPods 常用命令说明    </p>
-<ul>
-<li>新建Xcode工程 cd 到 工程根目录下    </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">///执行该命令 会在工程目录下生成 Podfile</span><br><span class="line">$ pod init</span><br></pre></td></tr></table></figure>
-<ul>
-<li>生成带 pods 工程，然后用 PodTest.xcworkspace 打开工程，这样依赖cocoapods工程就ok喽</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">///会生成 PodTest.xcworkspace 、Podfile.lock、Pods</span><br><span class="line">$pod install</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改 Podfile 添加你所需要的库，然后执行该下命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">///清楚原来的pods配置内容，重新生成，并重新生成Podfile.lock</span><br><span class="line">$pod update</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">///搜索你需要的 pods 库 例如</span><br><span class="line">$pod search AFNetworkig</span><br></pre></td></tr></table></figure>
-<ul>
-<li>pod install/update 缓慢时候可以用下面的操作</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">///以下不会升级CocoaPods的spec仓库</span><br><span class="line">$pod install --verbose --no-repo-update</span><br><span class="line">$pod update --verbose --no-repo-update</span><br></pre></td></tr></table></figure>
-<ul>
-<li>pod trunk 及相关在下篇给大家分享</li>
-</ul>
-<p>##cocoaPods 版本控制</p>
-<p>##Bridging Header: 在 Swift 中使用 Objective-C</p>
+<h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p><a href="https://github.com/cuiwe000/QRCodeDemo.git" target="_blank" rel="external">https://github.com/cuiwe000/QRCodeDemo.git</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/" target="_blank" rel="external">http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/</a><br><a href="https://github.com/MxABC/LBXScan" target="_blank" rel="external">https://github.com/MxABC/LBXScan</a> 这个很全</p>
 
       
     </div>
@@ -376,22 +357,24 @@ c">
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/" rel="next" title="几款好用的Xcode 插件">
-                <i class="fa fa-chevron-left"></i> 几款好用的Xcode 插件
+              <a href="/2016/03/18/coding-net上搭建hexo博客/" rel="next" title="coding.net上搭建hexo博客">
+                <i class="fa fa-chevron-left"></i> coding.net上搭建hexo博客
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/01/01/2016-01-01-zhe-ge-2015nian-de-zong-jie-dao-liao/" rel="prev" title="这个2015年的总结到了">
-                这个2015年的总结到了 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -406,10 +389,10 @@ c">
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/"
-     data-title="CocoaPods 安装说明及用法"
+        <div class="ds-share flat" data-thread-key="2016/03/21/iOS-QRcode识别及相册图片二维码识别/"
+     data-title="iOS QRcode识别及相册图片二维码读取识别"
      data-content=""
-     data-url="http://ihaodi.net/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/">
+     data-url="http://ihaodi.net/2016/03/21/iOS-QRcode识别及相册图片二维码识别/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -436,8 +419,8 @@ c">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/"
-           data-title="CocoaPods 安装说明及用法" data-url="http://ihaodi.net/2015/11/09/2015-11-09-cocoapods-an-zhuang-shuo-ming-ji-yong-fa/">
+      <div class="ds-thread" data-thread-key="2016/03/21/iOS-QRcode识别及相册图片二维码识别/"
+           data-title="iOS QRcode识别及相册图片二维码读取识别" data-url="http://ihaodi.net/2016/03/21/iOS-QRcode识别及相册图片二维码识别/">
       </div>
     
   </div>
@@ -540,7 +523,7 @@ c">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS原生API"><span class="nav-number">1.</span> <span class="nav-text">iOS原生API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ZXing-和-ZBar"><span class="nav-number">2.</span> <span class="nav-text">ZXing 和 ZBar</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS-WebView中-长按二维码的识别"><span class="nav-number">3.</span> <span class="nav-text">iOS WebView中 长按二维码的识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo地址"><span class="nav-number">4.</span> <span class="nav-text">Demo地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">5.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
