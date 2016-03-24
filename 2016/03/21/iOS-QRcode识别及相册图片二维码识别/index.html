@@ -46,6 +46,8 @@
 
 
 
+  
+
 
   <link rel="alternate" href="/atom.xml" title="好迪的博客" type="application/atom+xml" />
 
@@ -69,7 +71,7 @@ iOS原生API系统扫描的效率是最">
 <meta property="og:description" content="最近碰到一个用户 在使用我们 微链App 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。
 对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较
 iOS原生API系统扫描的效率是最">
-<meta property="og:updated_time" content="2016-03-23T11:53:19.000Z">
+<meta property="og:updated_time" content="2016-03-24T09:55:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS QRcode识别及相册图片二维码读取识别">
 <meta name="twitter:description" content="最近碰到一个用户 在使用我们 微链App 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。
@@ -347,7 +349,11 @@ iOS原生API系统扫描的效率是最">
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)ad_webViewDidFinishLoad:(UIWebView *)webView&#123;</span><br><span class="line">    //控制缓存</span><br><span class="line">    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@&quot;WebKitCacheModelPreferenceKey&quot;];</span><br><span class="line"></span><br><span class="line">    // 响应touch事件，以及获得点击的坐标位置，用于保存图片</span><br><span class="line">    [webView stringByEvaluatingJavaScriptFromString:kTouchJavaScriptString];</span><br><span class="line">    </span><br><span class="line">    [self ad_webViewDidFinishLoad:webView];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>基本就可以了。</p>
 <h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p><a href="https://github.com/cuiwe000/QRCodeDemo.git" target="_blank" rel="external">https://github.com/cuiwe000/QRCodeDemo.git</a></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/" target="_blank" rel="external">http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/</a><br><a href="https://github.com/MxABC/LBXScan" target="_blank" rel="external">https://github.com/MxABC/LBXScan</a> 这个很全</p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/" target="_blank" rel="external">http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/</a></p>
+<p><a href="https://github.com/MxABC/LBXScan" target="_blank" rel="external">https://github.com/MxABC/LBXScan</a> 这个很全</p>
+<p><a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#/apple_ref/doc/uid/TP30001266-SW1" target="_blank" rel="external">Apple CSS</a></p>
+<p><a href="http://my.oschina.net/hmj/blog/111344" target="_blank" rel="external">http://my.oschina.net/hmj/blog/111344</a></p>
+<p><a href="http://stackoverflow.com/questions/5995210/disabling-user-selection-in-uiwebview" target="_blank" rel="external">stackoverflow</a><br><a href="https://developer.mozilla.org/en-US/docs/CSS/:not" target="_blank" rel="external">CSS 参考</a></p>
 
       
     </div>
