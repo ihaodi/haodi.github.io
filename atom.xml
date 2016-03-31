@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ihaodi.net/"/>
-  <updated>2016-03-29T07:29:22.000Z</updated>
+  <updated>2016-03-31T14:46:54.000Z</updated>
   <id>http://ihaodi.net/</id>
   
   <author>
@@ -16,11 +16,103 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title> AFNetworking 3.0与服务端 自签名证书 https双向认证</title>
+    <link href="http://ihaodi.net/2016/03/29/https%E8%AF%B7%E6%B1%82/"/>
+    <id>http://ihaodi.net/2016/03/29/https请求/</id>
+    <published>2016-03-29T07:43:32.000Z</published>
+    <updated>2016-03-31T14:46:54.000Z</updated>
+    
+    <content type="html">&lt;p&gt;iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。&lt;/p&gt;
+&lt;p&gt;所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。&lt;/p&gt;
+&lt;h2 id=&quot;Apple-CSR-CER-P12-mobileprovition-到底是什么&quot;&gt;&lt;a href=&quot;#Apple-CSR-CER-P12-mobileprovition-到底是什么&quot; class=&quot;headerlink&quot; title=&quot;Apple CSR CER P12 mobileprovition 到底是什么&quot;&gt;&lt;/a&gt;Apple CSR CER P12 mobileprovition 到底是什么&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;CSR（Certificate Signing Request）钥匙串文件 为生成证书做基础，要生成CER证书必须要有CSR私钥，此私钥包含了用户自己的一些信息。这个文件是保存在我们的mac的(keychain)里面的, 此文件包含了(公钥和私钥)&lt;/li&gt;
+&lt;li&gt;CER 包含了开发者信息和公钥&lt;/li&gt;
+&lt;li&gt;P12 它不仅包含CER的信息，还有私钥信息，即： P12备份文件 = CER文件  + 私钥；所以有了这个p12就再也不用担心证书丢失了&lt;/li&gt;
+&lt;li&gt;mobileprovition 包含了上述所有内容 Certificate &amp;amp;&amp;amp; App ID &amp;amp;&amp;amp; Device, 这个Provisioning Profile文件会在打包时嵌入到.ipa的包里。本人理解的是 可以真机调试的凭证。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;https原理&quot;&gt;&lt;a href=&quot;#https原理&quot; class=&quot;headerlink&quot; title=&quot;https原理&quot;&gt;&lt;/a&gt;https原理&lt;/h2&gt;&lt;p&gt;HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。（摘自百度百科）&lt;/p&gt;
+&lt;p&gt;PKI（公钥基础设施）技术是HTTPS的基础，PKI与非对称密钥加密技术密切相关，包括消息摘要、数字签名和加密服务，而数字证书以及证书机构（CA – Certificate Authority）是PKI中的重要概念。&lt;/p&gt;
+&lt;p&gt;看看这篇&lt;a href=&quot;http://www.jianshu.com/p/2927ca2b3719&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;双向认证原理图:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../image/httpsyuanlitu.png&quot; alt=&quot;图片&quot;&gt;&lt;/p&gt;
+&lt;p&gt;##需要准备的自签名证书&lt;br&gt;1.服务器私钥 2.由CA签发的含有服务器公钥的数字证书 3.CA的数字证书。在双向认证的实践中，通常服务器可以自己作为证书机构，并且由服务器CA签发服务器证书和客户端证书。&lt;/p&gt;
+&lt;p&gt;1.客户端私钥 2. 由CA签发的含有客户端公钥的数字证书。为了避免中间人攻击，客户端还需要内置服务器证书，用来验证所连接的服务器是否是指定的服务器。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;服务端 .cer  &lt;/li&gt;
+&lt;li&gt;客户端 .p12  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;使用AFNetworking-3-0&quot;&gt;&lt;a href=&quot;#使用AFNetworking-3-0&quot; class=&quot;headerlink&quot; title=&quot;使用AFNetworking 3.0&quot;&gt;&lt;/a&gt;使用AFNetworking 3.0&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;NSString *certFilePath = [[NSBundle mainBundle] pathForResource:@&amp;quot;server&amp;quot; ofType:@&amp;quot;der&amp;quot;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSData *certData = [NSData dataWithContentsOfFile:certFilePath];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;NSSet *certSet = [NSSet setWithObject:certData];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;policy.allowInvalidCertificates = YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;policy.validatesDomainName = NO;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager = [AFHTTPSessionManager manager];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager.securityPolicy = policy;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager.requestSerializer = [AFHTTPRequestSerializer serializer];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager.responseSerializer = [AFHTTPResponseSerializer serializer];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@&amp;quot;application/json&amp;quot;, @&amp;quot;text/json&amp;quot;, @&amp;quot;text/javascript&amp;quot;,@&amp;quot;text/plain&amp;quot;, nil];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//关闭缓存避免干扰测试r&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;_manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;[_manager setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    DLog(@&amp;quot;setSessionDidBecomeInvalidBlock&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;pre&gt;&lt;code&gt;//客服端请求验证 重写 setSessionDidReceiveAuthenticationChallengeBlock 方法
+__weak typeof(self)weakSelf = self;   
+[_manager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __autoreleasing NSURLCredential *credential =nil;
+    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        if([weakSelf.manager.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            if(credential) {
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            } else {
+                disposition =NSURLSessionAuthChallengePerformDefaultHandling;
+            }
+        } else {
+            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+        }
+    } else {
+        // client authentication
+        SecIdentityRef identity = NULL;
+        SecTrustRef trust = NULL;
+        NSString *p12 = [[NSBundle mainBundle] pathForResource:@&amp;quot;client&amp;quot;ofType:@&amp;quot;p12&amp;quot;];
+        NSFileManager *fileManager =[NSFileManager defaultManager];
+
+        if(![fileManager fileExistsAtPath:p12])
+        {
+            NSLog(@&amp;quot;client.p12:not exist&amp;quot;);
+        }
+        else
+        {
+            NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
+
+            if ([[weakSelf class]extractIdentity:&amp;amp;identity andTrust:&amp;amp;trust fromPKCS12Data:PKCS12Data])
+            {
+                SecCertificateRef certificate = NULL;
+                SecIdentityCopyCertificate(identity, &amp;amp;certificate);
+                const void*certs[] = {certificate};
+                CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
+                credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            }
+        }
+    }
+    *_credential = credential;
+    return disposition;
+}];
+&lt;/code&gt;&lt;/pre&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;+(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    OSStatus securityError = errSecSuccess;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //client certificate password&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:@&amp;quot;你的p12密码&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                                forKey:(__bridge id)kSecImportExportPassphrase];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    securityError = SecPKCS12Import((__bridge CFDataRef)inPKCS12Data,(__bridge CFDictionaryRef)optionsDictionary,&amp;amp;items);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if(securityError == 0) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        CFDictionaryRef myIdentityAndTrust =CFArrayGetValueAtIndex(items,0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        const void*tempIdentity =NULL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        tempIdentity= CFDictionaryGetValue (myIdentityAndTrust,kSecImportItemIdentity);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        *outIdentity = (SecIdentityRef)tempIdentity;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        const void*tempTrust =NULL;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        tempTrust = CFDictionaryGetValue(myIdentityAndTrust,kSecImportItemTrust);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        *outTrust = (SecTrustRef)tempTrust;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; else &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        NSLog(@&amp;quot;Failedwith error code %d&amp;quot;,(int)securityError);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        return NO;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return YES;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;完毕&lt;/p&gt;
+&lt;h2 id=&quot;使用MKNetworkKit&quot;&gt;&lt;a href=&quot;#使用MKNetworkKit&quot; class=&quot;headerlink&quot; title=&quot;使用MKNetworkKit&quot;&gt;&lt;/a&gt;使用MKNetworkKit&lt;/h2&gt;&lt;h2 id=&quot;使用苹果官方原生&quot;&gt;&lt;a href=&quot;#使用苹果官方原生&quot; class=&quot;headerlink&quot; title=&quot;使用苹果官方原生&quot;&gt;&lt;/a&gt;使用苹果官方原生&lt;/h2&gt;&lt;h2 id=&quot;Demo&quot;&gt;&lt;a href=&quot;#Demo&quot; class=&quot;headerlink&quot; title=&quot;Demo&quot;&gt;&lt;/a&gt;Demo&lt;/h2&gt;&lt;h2 id=&quot;参考文档&quot;&gt;&lt;a href=&quot;#参考文档&quot; class=&quot;headerlink&quot; title=&quot;参考文档&quot;&gt;&lt;/a&gt;参考文档&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://m.ithao123.cn/content-10472230.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://m.ithao123.cn/content-10472230.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.apple.com/library/mac/documentation/Security/Conceptual/CertKeyTrustProgGuide/iPhone_Tasks/iPhone_Tasks.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;苹果官方说明&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。&lt;/p&gt;
+&lt;p&gt;所以最近因公司业务及数据安全上的需要准备使用htt
+    
+    </summary>
+    
+    
+      <category term="iOS" scheme="http://ihaodi.net/tags/iOS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>iOS QRcode识别及相册图片二维码读取识别</title>
     <link href="http://ihaodi.net/2016/03/21/iOS-QRcode%E8%AF%86%E5%88%AB%E5%8F%8A%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/"/>
     <id>http://ihaodi.net/2016/03/21/iOS-QRcode识别及相册图片二维码识别/</id>
     <published>2016-03-21T03:44:03.000Z</published>
-    <updated>2016-03-29T07:29:22.000Z</updated>
+    <updated>2016-03-30T05:38:49.000Z</updated>
     
     <content type="html">&lt;p&gt;最近碰到一个用户 在使用我们 &lt;a href=&quot;https://itunes.apple.com/hk/app/wei-lian-chuang-ye-she-jiao/id944154493?l=zh&amp;amp;mt=8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;微链App&lt;/a&gt; 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。&lt;/p&gt;
 &lt;p&gt;对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较&lt;/p&gt;
@@ -31,7 +123,7 @@
 &lt;h2 id=&quot;ZXing-和-ZBar&quot;&gt;&lt;a href=&quot;#ZXing-和-ZBar&quot; class=&quot;headerlink&quot; title=&quot;ZXing 和 ZBar&quot;&gt;&lt;/a&gt;ZXing 和 ZBar&lt;/h2&gt;&lt;p&gt;具体代码 我就不在这里写了，Demo里 都写了，而且百度谷歌千篇一律，说说ZXing的一些用到的特点：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;对那种小圆点的二维码 ZXing和原生API 都是支持的，而ZBar 貌似不是支持的，反正我没搞定。&lt;/li&gt;
-&lt;li&gt;ZXing 现在还在继续维护 ZBar 而已经停止了&lt;/li&gt;
+&lt;li&gt;ZBar 现在还在继续维护 ZBar 而已经停止了&lt;/li&gt;
 &lt;li&gt;ZXing 可以识别图片中多个二维码&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ZBar中的识别率 本人觉得还是比较低&lt;/p&gt;

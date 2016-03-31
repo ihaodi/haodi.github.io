@@ -238,6 +238,181 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/29/https请求/" itemprop="url">
+                   AFNetworking 3.0与服务端 自签名证书 https双向认证
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-29T15:43:32+08:00" content="2016-03-29">
+              2016-03-29
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/29/https请求/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/https请求/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/29/https请求/" class="leancloud_visitors" data-flag-title=" AFNetworking 3.0与服务端 自签名证书 https双向认证">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。</p>
+<p>所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。</p>
+<h2 id="Apple-CSR-CER-P12-mobileprovition-到底是什么"><a href="#Apple-CSR-CER-P12-mobileprovition-到底是什么" class="headerlink" title="Apple CSR CER P12 mobileprovition 到底是什么"></a>Apple CSR CER P12 mobileprovition 到底是什么</h2><ul>
+<li>CSR（Certificate Signing Request）钥匙串文件 为生成证书做基础，要生成CER证书必须要有CSR私钥，此私钥包含了用户自己的一些信息。这个文件是保存在我们的mac的(keychain)里面的, 此文件包含了(公钥和私钥)</li>
+<li>CER 包含了开发者信息和公钥</li>
+<li>P12 它不仅包含CER的信息，还有私钥信息，即： P12备份文件 = CER文件  + 私钥；所以有了这个p12就再也不用担心证书丢失了</li>
+<li>mobileprovition 包含了上述所有内容 Certificate &amp;&amp; App ID &amp;&amp; Device, 这个Provisioning Profile文件会在打包时嵌入到.ipa的包里。本人理解的是 可以真机调试的凭证。</li>
+</ul>
+<h2 id="https原理"><a href="#https原理" class="headerlink" title="https原理"></a>https原理</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。（摘自百度百科）</p>
+<p>PKI（公钥基础设施）技术是HTTPS的基础，PKI与非对称密钥加密技术密切相关，包括消息摘要、数字签名和加密服务，而数字证书以及证书机构（CA – Certificate Authority）是PKI中的重要概念。</p>
+<p>看看这篇<a href="http://www.jianshu.com/p/2927ca2b3719" target="_blank" rel="external">文章</a></p>
+<p>双向认证原理图:</p>
+<p><img src="../image/httpsyuanlitu.png" alt="图片"></p>
+<p>##需要准备的自签名证书<br>1.服务器私钥 2.由CA签发的含有服务器公钥的数字证书 3.CA的数字证书。在双向认证的实践中，通常服务器可以自己作为证书机构，并且由服务器CA签发服务器证书和客户端证书。</p>
+<p>1.客户端私钥 2. 由CA签发的含有客户端公钥的数字证书。为了避免中间人攻击，客户端还需要内置服务器证书，用来验证所连接的服务器是否是指定的服务器。</p>
+<ul>
+<li>服务端 .cer  </li>
+<li>客户端 .p12  </li>
+</ul>
+<h2 id="使用AFNetworking-3-0"><a href="#使用AFNetworking-3-0" class="headerlink" title="使用AFNetworking 3.0"></a>使用AFNetworking 3.0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">NSString *certFilePath = [[NSBundle mainBundle] pathForResource:@&quot;server&quot; ofType:@&quot;der&quot;];</span><br><span class="line">NSData *certData = [NSData dataWithContentsOfFile:certFilePath];</span><br><span class="line">NSSet *certSet = [NSSet setWithObject:certData];</span><br><span class="line">AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];</span><br><span class="line">policy.allowInvalidCertificates = YES;</span><br><span class="line">policy.validatesDomainName = NO;</span><br><span class="line"> </span><br><span class="line">_manager = [AFHTTPSessionManager manager];</span><br><span class="line">_manager.securityPolicy = policy;</span><br><span class="line">_manager.requestSerializer = [AFHTTPRequestSerializer serializer];</span><br><span class="line">_manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line">_manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;, @&quot;text/javascript&quot;,@&quot;text/plain&quot;, nil];</span><br><span class="line">//关闭缓存避免干扰测试r</span><br><span class="line">_manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;</span><br><span class="line">[_manager setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) &#123;</span><br><span class="line">    DLog(@&quot;setSessionDidBecomeInvalidBlock&quot;);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<pre><code>//客服端请求验证 重写 setSessionDidReceiveAuthenticationChallengeBlock 方法
+__weak typeof(self)weakSelf = self;   
+[_manager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __autoreleasing NSURLCredential *credential =nil;
+    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        if([weakSelf.manager.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            if(credential) {
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            } else {
+                disposition =NSURLSessionAuthChallengePerformDefaultHandling;
+            }
+        } else {
+            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+        }
+    } else {
+        // client authentication
+        SecIdentityRef identity = NULL;
+        SecTrustRef trust = NULL;
+        NSString *p12 = [[NSBundle mainBundle] pathForResource:@&quot;client&quot;ofType:@&quot;p12&quot;];
+        NSFileManager *fileManager =[NSFileManager defaultManager];
+
+        if(![fileManager fileExistsAtPath:p12])
+        {
+            NSLog(@&quot;client.p12:not exist&quot;);
+        }
+        else
+        {
+            NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
+
+            if ([[weakSelf class]extractIdentity:&amp;identity andTrust:&amp;trust fromPKCS12Data:PKCS12Data])
+            {
+                SecCertificateRef certificate = NULL;
+                SecIdentityCopyCertificate(identity, &amp;certificate);
+                const void*certs[] = {certificate};
+                CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
+                credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            }
+        }
+    }
+    *_credential = credential;
+    return disposition;
+}];
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data &#123;</span><br><span class="line">    OSStatus securityError = errSecSuccess;</span><br><span class="line">    //client certificate password</span><br><span class="line">    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:@&quot;你的p12密码&quot;</span><br><span class="line">                                                                forKey:(__bridge id)kSecImportExportPassphrase];</span><br><span class="line">    </span><br><span class="line">    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);</span><br><span class="line">    securityError = SecPKCS12Import((__bridge CFDataRef)inPKCS12Data,(__bridge CFDictionaryRef)optionsDictionary,&amp;items);</span><br><span class="line">    </span><br><span class="line">    if(securityError == 0) &#123;</span><br><span class="line">        CFDictionaryRef myIdentityAndTrust =CFArrayGetValueAtIndex(items,0);</span><br><span class="line">        const void*tempIdentity =NULL;</span><br><span class="line">        tempIdentity= CFDictionaryGetValue (myIdentityAndTrust,kSecImportItemIdentity);</span><br><span class="line">        *outIdentity = (SecIdentityRef)tempIdentity;</span><br><span class="line">        const void*tempTrust =NULL;</span><br><span class="line">        tempTrust = CFDictionaryGetValue(myIdentityAndTrust,kSecImportItemTrust);</span><br><span class="line">        *outTrust = (SecTrustRef)tempTrust;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;Failedwith error code %d&quot;,(int)securityError);</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完毕</p>
+<h2 id="使用MKNetworkKit"><a href="#使用MKNetworkKit" class="headerlink" title="使用MKNetworkKit"></a>使用MKNetworkKit</h2><h2 id="使用苹果官方原生"><a href="#使用苹果官方原生" class="headerlink" title="使用苹果官方原生"></a>使用苹果官方原生</h2><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://m.ithao123.cn/content-10472230.html" target="_blank" rel="external">http://m.ithao123.cn/content-10472230.html</a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/Security/Conceptual/CertKeyTrustProgGuide/iPhone_Tasks/iPhone_Tasks.html" target="_blank" rel="external">苹果官方说明</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/" itemprop="url">
                   iOS QRcode识别及相册图片二维码读取识别
                 </a>
@@ -325,7 +500,7 @@
 <h2 id="ZXing-和-ZBar"><a href="#ZXing-和-ZBar" class="headerlink" title="ZXing 和 ZBar"></a>ZXing 和 ZBar</h2><p>具体代码 我就不在这里写了，Demo里 都写了，而且百度谷歌千篇一律，说说ZXing的一些用到的特点：</p>
 <ul>
 <li>对那种小圆点的二维码 ZXing和原生API 都是支持的，而ZBar 貌似不是支持的，反正我没搞定。</li>
-<li>ZXing 现在还在继续维护 ZBar 而已经停止了</li>
+<li>ZBar 现在还在继续维护 ZBar 而已经停止了</li>
 <li>ZXing 可以识别图片中多个二维码</li>
 </ul>
 <p>ZBar中的识别率 本人觉得还是比较低</p>
@@ -389,140 +564,11 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/18/coding-net上搭建hexo博客/" itemprop="url">
-                  coding.net上搭建hexo博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-18T15:03:18+08:00" content="2016-03-18">
-              2016-03-18
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/18/coding-net上搭建hexo博客/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/18/coding-net上搭建hexo博客/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/18/coding-net上搭建hexo博客/" class="leancloud_visitors" data-flag-title="coding.net上搭建hexo博客">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到唐巧的一篇文章 <a href="http://devtang.com/2016/02/16/from-octopress-to-hexo/" target="_blank" rel="external">搭建hexo博客</a>。好吧，那就玩一下~ (备注 coding是收费的啊，实在不行，去国外的github)</p>
-<h2 id="在mac上搭建Hexo"><a href="#在mac上搭建Hexo" class="headerlink" title="在mac上搭建Hexo"></a>在mac上搭建Hexo</h2><p>Hexo 原理:（引自唐巧）</p>
-<ul>
-<li>Hexo 的原理和 Octopress 一样，都是生成静态文件，这样可以方便地托管到 GitHub 和 GitCafe 上。</li>
-<li>Hexo 是基于 Node 的，而 Node 的速度非常快。</li>
-</ul>
-<h3 id="mac上Hexo环境安装"><a href="#mac上Hexo环境安装" class="headerlink" title="mac上Hexo环境安装"></a>mac上Hexo环境安装</h3><p>先是装 node 看看这篇文章 <a href="http://blog.teamtreehouse.com/install-node-js-npm-mac" target="_blank" rel="external">http://blog.teamtreehouse.com/install-node-js-npm-mac</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 看看有木有 homebrow 木有就安装</span><br><span class="line">$ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line">// 使用Homebrew安装 快捷方便</span><br><span class="line">$brew install node</span><br></pre></td></tr></table></figure>
-<p>安装完成之后 会看到如下图</p>
-<p><img src="../images/2016-03-186.05.51.png" alt="图片"><br>然后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 安装hexo环境</span><br><span class="line">$ npm install -g hexo</span><br><span class="line">// 新建文件夹 如：Hexoblog 文件夹 </span><br><span class="line">$ cd Hexoblog</span><br><span class="line">// 初始化hexo 博客所需的文件</span><br><span class="line">$ hexo init</span><br></pre></td></tr></table></figure>
-<p>之后就基本装完了</p>
-<h3 id="Hexo-插件安装"><a href="#Hexo-插件安装" class="headerlink" title="Hexo 插件安装"></a>Hexo 插件安装</h3><p>把下班的代码全复制粘贴到终端 就会全部执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-index --save</span><br><span class="line">npm install hexo-generator-archive --save</span><br><span class="line">npm install hexo-generator-category --save</span><br><span class="line">npm install hexo-generator-tag --save</span><br><span class="line">npm install hexo-server --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">npm install hexo-deployer-heroku --save</span><br><span class="line">npm install hexo-deployer-rsync --save</span><br><span class="line">npm install hexo-deployer-openshift --save</span><br><span class="line">npm install hexo-renderer-marked@0.2 --save</span><br><span class="line">npm install hexo-renderer-stylus@0.2 --save</span><br><span class="line">npm install hexo-generator-feed@1 --save</span><br><span class="line">npm install hexo-generator-sitemap@1 --save</span><br></pre></td></tr></table></figure>
-<h3 id="Hexo-的执行"><a href="#Hexo-的执行" class="headerlink" title="Hexo 的执行"></a>Hexo 的执行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 新建文章</span><br><span class="line">$ hexo n #文章标题#</span><br><span class="line">// 编译生成文章所配置的文件</span><br><span class="line">$ hexo g</span><br><span class="line">// 开启服务</span><br><span class="line">$ hexo s</span><br></pre></td></tr></table></figure>
-<p>就可以访问<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>啦</p>
-<h2 id="部署到coding-net"><a href="#部署到coding-net" class="headerlink" title="部署到coding.net"></a>部署到coding.net</h2><p>注册登录 添加仓库 这里就不说类 不会自己度娘谷歌</p>
-<p>进入之前生成的 Hexoblog 文件夹<br>你会看到如下图</p>
-<p><img src="../images/屏幕快照 2016-03-18 下午8.32.03.png" alt="目录图"><br>编辑 _config.yml </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line"> type: git</span><br><span class="line"> repo: https://git.coding.net/ihaodi/blog.git</span><br><span class="line"> branch: master</span><br></pre></td></tr></table></figure>
-<p>输入 用户名 密码 <code>$hexo d</code> 分分钟部署上去了</p>
-<p>然后在 coding上点击 [演示] 按步骤一步一步来.</p>
-<p>完成！ 就可以访问啦</p>
-<h2 id="Hexo主题安装"><a href="#Hexo主题安装" class="headerlink" title="Hexo主题安装"></a>Hexo主题安装</h2><p>在github 上的一个 标记star 比较多的主题 next。挺简洁清爽的，就用它了！<br><a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="external">https://github.com/iissnan/hexo-theme-next</a> ，<a href="http://theme-next.iissnan.com/" target="_blank" rel="external">http://theme-next.iissnan.com/</a>其实所给文档写的很清楚 我这里就不在重复了。</p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p><a href="http://www.zipperary.com/2013/05/29/hexo-guide-3/" target="_blank" rel="external">http://www.zipperary.com/2013/05/29/hexo-guide-3/</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -563,7 +609,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

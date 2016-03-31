@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="iOS," />
 
 
 
@@ -59,19 +59,24 @@
 
 
 
-<meta name="description" content="App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；">
+<meta name="description" content="iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。
+所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。
+Apple CSR CER P12 mobileprovition 到底是什么">
 <meta property="og:type" content="article">
-<meta property="og:title" content="App 推广运营图">
-<meta property="og:url" content="http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/index.html">
+<meta property="og:title" content=" AFNetworking 3.0与服务端 自签名证书 https双向认证">
+<meta property="og:url" content="http://ihaodi.net/2016/03/29/https请求/index.html">
 <meta property="og:site_name" content="好迪的博客">
-<meta property="og:description" content="App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；">
-<meta property="og:image" content="http://ihaodi.net/../images/2016-01-17 13.52.17.jpg">
-<meta property="og:image" content="http://ihaodi.net/../images/2016-01-17 13.52.20.png">
-<meta property="og:updated_time" content="2016-03-18T15:33:46.000Z">
+<meta property="og:description" content="iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。
+所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。
+Apple CSR CER P12 mobileprovition 到底是什么">
+<meta property="og:image" content="http://ihaodi.net/../image/httpsyuanlitu.png">
+<meta property="og:updated_time" content="2016-03-31T14:46:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="App 推广运营图">
-<meta name="twitter:description" content="App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；">
-<meta name="twitter:image" content="http://ihaodi.net/../images/2016-01-17 13.52.17.jpg">
+<meta name="twitter:title" content=" AFNetworking 3.0与服务端 自签名证书 https双向认证">
+<meta name="twitter:description" content="iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。
+所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。
+Apple CSR CER P12 mobileprovition 到底是什么">
+<meta name="twitter:image" content="http://ihaodi.net/../image/httpsyuanlitu.png">
 
 
 
@@ -89,7 +94,7 @@
   };
 </script>
 
-  <title> App 推广运营图 | 好迪的博客 </title>
+  <title>  AFNetworking 3.0与服务端 自签名证书 https双向认证 | 好迪的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -239,7 +244,7 @@
             
             
               
-                App 推广运营图
+                 AFNetworking 3.0与服务端 自签名证书 https双向认证
               
             
           </h1>
@@ -251,38 +256,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-01-17T13:43:24+08:00" content="2016-01-17">
-              2016-01-17
+            <time itemprop="dateCreated" datetime="2016-03-29T15:43:32+08:00" content="2016-03-29">
+              2016-03-29
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/business/" itemprop="url" rel="index">
-                    <span itemprop="name">business</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/" itemprop="commentsCount"></span>
+                <a href="/2016/03/29/https请求/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/29/https请求/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -292,7 +278,7 @@
 
           
           
-             <span id="/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/" class="leancloud_visitors" data-flag-title="App 推广运营图">
+             <span id="/2016/03/29/https请求/" class="leancloud_visitors" data-flag-title=" AFNetworking 3.0与服务端 自签名证书 https双向认证">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -313,9 +299,77 @@
       
 
       
-        <p>App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；</p>
-<p><img src="../images/2016-01-17 13.52.17.jpg" alt="" title="推广图"></p>
-<p><img src="../images/2016-01-17 13.52.20.png" alt="" title="分工图"></p>
+        <p>iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。</p>
+<p>所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。</p>
+<h2 id="Apple-CSR-CER-P12-mobileprovition-到底是什么"><a href="#Apple-CSR-CER-P12-mobileprovition-到底是什么" class="headerlink" title="Apple CSR CER P12 mobileprovition 到底是什么"></a>Apple CSR CER P12 mobileprovition 到底是什么</h2><ul>
+<li>CSR（Certificate Signing Request）钥匙串文件 为生成证书做基础，要生成CER证书必须要有CSR私钥，此私钥包含了用户自己的一些信息。这个文件是保存在我们的mac的(keychain)里面的, 此文件包含了(公钥和私钥)</li>
+<li>CER 包含了开发者信息和公钥</li>
+<li>P12 它不仅包含CER的信息，还有私钥信息，即： P12备份文件 = CER文件  + 私钥；所以有了这个p12就再也不用担心证书丢失了</li>
+<li>mobileprovition 包含了上述所有内容 Certificate &amp;&amp; App ID &amp;&amp; Device, 这个Provisioning Profile文件会在打包时嵌入到.ipa的包里。本人理解的是 可以真机调试的凭证。</li>
+</ul>
+<h2 id="https原理"><a href="#https原理" class="headerlink" title="https原理"></a>https原理</h2><p>HTTPS（全称：Hyper Text Transfer Protocol over Secure Socket Layer），是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。 它是一个URI scheme（抽象标识符体系），句法类同http:体系。用于安全的HTTP数据传输。https:URL表明它使用了HTTP，但HTTPS存在不同于HTTP的默认端口及一个加密/身份验证层（在HTTP与TCP之间）。这个系统的最初研发由网景公司(Netscape)进行，并内置于其浏览器Netscape Navigator中，提供了身份验证与加密通讯方法。（摘自百度百科）</p>
+<p>PKI（公钥基础设施）技术是HTTPS的基础，PKI与非对称密钥加密技术密切相关，包括消息摘要、数字签名和加密服务，而数字证书以及证书机构（CA – Certificate Authority）是PKI中的重要概念。</p>
+<p>看看这篇<a href="http://www.jianshu.com/p/2927ca2b3719" target="_blank" rel="external">文章</a></p>
+<p>双向认证原理图:</p>
+<p><img src="../image/httpsyuanlitu.png" alt="图片"></p>
+<p>##需要准备的自签名证书<br>1.服务器私钥 2.由CA签发的含有服务器公钥的数字证书 3.CA的数字证书。在双向认证的实践中，通常服务器可以自己作为证书机构，并且由服务器CA签发服务器证书和客户端证书。</p>
+<p>1.客户端私钥 2. 由CA签发的含有客户端公钥的数字证书。为了避免中间人攻击，客户端还需要内置服务器证书，用来验证所连接的服务器是否是指定的服务器。</p>
+<ul>
+<li>服务端 .cer  </li>
+<li>客户端 .p12  </li>
+</ul>
+<h2 id="使用AFNetworking-3-0"><a href="#使用AFNetworking-3-0" class="headerlink" title="使用AFNetworking 3.0"></a>使用AFNetworking 3.0</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">NSString *certFilePath = [[NSBundle mainBundle] pathForResource:@&quot;server&quot; ofType:@&quot;der&quot;];</span><br><span class="line">NSData *certData = [NSData dataWithContentsOfFile:certFilePath];</span><br><span class="line">NSSet *certSet = [NSSet setWithObject:certData];</span><br><span class="line">AFSecurityPolicy *policy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate withPinnedCertificates:certSet];</span><br><span class="line">policy.allowInvalidCertificates = YES;</span><br><span class="line">policy.validatesDomainName = NO;</span><br><span class="line"> </span><br><span class="line">_manager = [AFHTTPSessionManager manager];</span><br><span class="line">_manager.securityPolicy = policy;</span><br><span class="line">_manager.requestSerializer = [AFHTTPRequestSerializer serializer];</span><br><span class="line">_manager.responseSerializer = [AFHTTPResponseSerializer serializer];</span><br><span class="line">_manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObjects:@&quot;application/json&quot;, @&quot;text/json&quot;, @&quot;text/javascript&quot;,@&quot;text/plain&quot;, nil];</span><br><span class="line">//关闭缓存避免干扰测试r</span><br><span class="line">_manager.requestSerializer.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;</span><br><span class="line">[_manager setSessionDidBecomeInvalidBlock:^(NSURLSession * _Nonnull session, NSError * _Nonnull error) &#123;</span><br><span class="line">    DLog(@&quot;setSessionDidBecomeInvalidBlock&quot;);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<pre><code>//客服端请求验证 重写 setSessionDidReceiveAuthenticationChallengeBlock 方法
+__weak typeof(self)weakSelf = self;   
+[_manager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition(NSURLSession*session, NSURLAuthenticationChallenge *challenge, NSURLCredential *__autoreleasing*_credential) {
+    NSURLSessionAuthChallengeDisposition disposition = NSURLSessionAuthChallengePerformDefaultHandling;
+    __autoreleasing NSURLCredential *credential =nil;
+    if([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        if([weakSelf.manager.securityPolicy evaluateServerTrust:challenge.protectionSpace.serverTrust forDomain:challenge.protectionSpace.host]) {
+            credential = [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust];
+            if(credential) {
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            } else {
+                disposition =NSURLSessionAuthChallengePerformDefaultHandling;
+            }
+        } else {
+            disposition = NSURLSessionAuthChallengeCancelAuthenticationChallenge;
+        }
+    } else {
+        // client authentication
+        SecIdentityRef identity = NULL;
+        SecTrustRef trust = NULL;
+        NSString *p12 = [[NSBundle mainBundle] pathForResource:@&quot;client&quot;ofType:@&quot;p12&quot;];
+        NSFileManager *fileManager =[NSFileManager defaultManager];
+
+        if(![fileManager fileExistsAtPath:p12])
+        {
+            NSLog(@&quot;client.p12:not exist&quot;);
+        }
+        else
+        {
+            NSData *PKCS12Data = [NSData dataWithContentsOfFile:p12];
+
+            if ([[weakSelf class]extractIdentity:&amp;identity andTrust:&amp;trust fromPKCS12Data:PKCS12Data])
+            {
+                SecCertificateRef certificate = NULL;
+                SecIdentityCopyCertificate(identity, &amp;certificate);
+                const void*certs[] = {certificate};
+                CFArrayRef certArray =CFArrayCreate(kCFAllocatorDefault, certs,1,NULL);
+                credential =[NSURLCredential credentialWithIdentity:identity certificates:(__bridge  NSArray*)certArray persistence:NSURLCredentialPersistencePermanent];
+                disposition =NSURLSessionAuthChallengeUseCredential;
+            }
+        }
+    }
+    *_credential = credential;
+    return disposition;
+}];
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">+(BOOL)extractIdentity:(SecIdentityRef*)outIdentity andTrust:(SecTrustRef *)outTrust fromPKCS12Data:(NSData *)inPKCS12Data &#123;</span><br><span class="line">    OSStatus securityError = errSecSuccess;</span><br><span class="line">    //client certificate password</span><br><span class="line">    NSDictionary*optionsDictionary = [NSDictionary dictionaryWithObject:@&quot;你的p12密码&quot;</span><br><span class="line">                                                                forKey:(__bridge id)kSecImportExportPassphrase];</span><br><span class="line">    </span><br><span class="line">    CFArrayRef items = CFArrayCreate(NULL, 0, 0, NULL);</span><br><span class="line">    securityError = SecPKCS12Import((__bridge CFDataRef)inPKCS12Data,(__bridge CFDictionaryRef)optionsDictionary,&amp;items);</span><br><span class="line">    </span><br><span class="line">    if(securityError == 0) &#123;</span><br><span class="line">        CFDictionaryRef myIdentityAndTrust =CFArrayGetValueAtIndex(items,0);</span><br><span class="line">        const void*tempIdentity =NULL;</span><br><span class="line">        tempIdentity= CFDictionaryGetValue (myIdentityAndTrust,kSecImportItemIdentity);</span><br><span class="line">        *outIdentity = (SecIdentityRef)tempIdentity;</span><br><span class="line">        const void*tempTrust =NULL;</span><br><span class="line">        tempTrust = CFDictionaryGetValue(myIdentityAndTrust,kSecImportItemTrust);</span><br><span class="line">        *outTrust = (SecTrustRef)tempTrust;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        NSLog(@&quot;Failedwith error code %d&quot;,(int)securityError);</span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>完毕</p>
+<h2 id="使用MKNetworkKit"><a href="#使用MKNetworkKit" class="headerlink" title="使用MKNetworkKit"></a>使用MKNetworkKit</h2><h2 id="使用苹果官方原生"><a href="#使用苹果官方原生" class="headerlink" title="使用苹果官方原生"></a>使用苹果官方原生</h2><h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://m.ithao123.cn/content-10472230.html" target="_blank" rel="external">http://m.ithao123.cn/content-10472230.html</a></li>
+<li><a href="https://developer.apple.com/library/mac/documentation/Security/Conceptual/CertKeyTrustProgGuide/iPhone_Tasks/iPhone_Tasks.html" target="_blank" rel="external">苹果官方说明</a></li>
+</ul>
 
       
     </div>
@@ -328,22 +382,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/01/2016-01-01-zhe-ge-2015nian-de-zong-jie-dao-liao/" rel="next" title="这个2015年的总结到了">
-                <i class="fa fa-chevron-left"></i> 这个2015年的总结到了
+              <a href="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/" rel="next" title="iOS QRcode识别及相册图片二维码读取识别">
+                <i class="fa fa-chevron-left"></i> iOS QRcode识别及相册图片二维码读取识别
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/17/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -358,10 +414,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/"
-     data-title="App 推广运营图"
+        <div class="ds-share flat" data-thread-key="2016/03/29/https请求/"
+     data-title=" AFNetworking 3.0与服务端 自签名证书 https双向认证"
      data-content=""
-     data-url="http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/">
+     data-url="http://ihaodi.net/2016/03/29/https请求/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -388,8 +444,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/"
-           data-title="App 推广运营图" data-url="http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/">
+      <div class="ds-thread" data-thread-key="2016/03/29/https请求/"
+           data-title=" AFNetworking 3.0与服务端 自签名证书 https双向认证" data-url="http://ihaodi.net/2016/03/29/https请求/">
       </div>
     
   </div>
@@ -492,7 +548,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Apple-CSR-CER-P12-mobileprovition-到底是什么"><span class="nav-number">1.</span> <span class="nav-text">Apple CSR CER P12 mobileprovition 到底是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#https原理"><span class="nav-number">2.</span> <span class="nav-text">https原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用AFNetworking-3-0"><span class="nav-number">3.</span> <span class="nav-text">使用AFNetworking 3.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用MKNetworkKit"><span class="nav-number">4.</span> <span class="nav-text">使用MKNetworkKit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用苹果官方原生"><span class="nav-number">5.</span> <span class="nav-text">使用苹果官方原生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Demo"><span class="nav-number">6.</span> <span class="nav-text">Demo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考文档"><span class="nav-number">7.</span> <span class="nav-text">参考文档</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
