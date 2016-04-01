@@ -309,7 +309,7 @@
 <p>PKI（公钥基础设施）技术是HTTPS的基础，PKI与非对称密钥加密技术密切相关，包括消息摘要、数字签名和加密服务，而数字证书以及证书机构（CA – Certificate Authority）是PKI中的重要概念。</p>
 <p>看看这篇<a href="http://www.jianshu.com/p/2927ca2b3719" target="_blank" rel="external">文章</a></p>
 <p>双向认证原理图:</p>
-<p><img src="../images/httpsyuanlitu.png" alt="图片"></p>
+<p><img src="/images/httpsyuanlitu.png" alt="图片"></p>
 <p>##需要准备的自签名证书<br>1.服务器私钥 2.由CA签发的含有服务器公钥的数字证书 3.CA的数字证书。在双向认证的实践中，通常服务器可以自己作为证书机构，并且由服务器CA签发服务器证书和客户端证书。</p>
 <p>1.客户端私钥 2. 由CA签发的含有客户端公钥的数字证书。为了避免中间人攻击，客户端还需要内置服务器证书，用来验证所连接的服务器是否是指定的服务器。</p>
 <ul>
