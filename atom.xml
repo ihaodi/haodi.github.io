@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ihaodi.net/"/>
-  <updated>2016-04-01T03:11:24.000Z</updated>
+  <updated>2016-04-01T03:15:30.000Z</updated>
   <id>http://ihaodi.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://ihaodi.net/2016/03/29/https%E8%AF%B7%E6%B1%82/"/>
     <id>http://ihaodi.net/2016/03/29/https请求/</id>
     <published>2016-03-29T07:43:32.000Z</published>
-    <updated>2016-04-01T03:11:24.000Z</updated>
+    <updated>2016-04-01T03:15:30.000Z</updated>
     
     <content type="html">&lt;p&gt;iOS网络安全现在越来越重要，一个抓包工具（charles等）随随便便就能抓到你所请求的数据，这些数据如果是明码的后果很严重，不是指明文，可以通过这些数据来判定服务端部署的数据接口，更能够嗅探到服务端的漏洞。&lt;/p&gt;
 &lt;p&gt;所以最近因公司业务及数据安全上的需要准备使用https方式进行数据请求。而且苹果现在默认是https方式请求。&lt;/p&gt;
@@ -34,7 +34,7 @@
 &lt;p&gt;PKI（公钥基础设施）技术是HTTPS的基础，PKI与非对称密钥加密技术密切相关，包括消息摘要、数字签名和加密服务，而数字证书以及证书机构（CA – Certificate Authority）是PKI中的重要概念。&lt;/p&gt;
 &lt;p&gt;看看这篇&lt;a href=&quot;http://www.jianshu.com/p/2927ca2b3719&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文章&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;双向认证原理图:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/httpsyuanlitu.png&quot; alt=&quot;图片&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ihaodi.net/images/httpsyuanlitu.png&quot; alt=&quot;图片&quot;&gt;&lt;/p&gt;
 &lt;p&gt;##需要准备的自签名证书&lt;br&gt;1.服务器私钥 2.由CA签发的含有服务器公钥的数字证书 3.CA的数字证书。在双向认证的实践中，通常服务器可以自己作为证书机构，并且由服务器CA签发服务器证书和客户端证书。&lt;/p&gt;
 &lt;p&gt;1.客户端私钥 2. 由CA签发的含有客户端公钥的数字证书。为了避免中间人攻击，客户端还需要内置服务器证书，用来验证所连接的服务器是否是指定的服务器。&lt;/p&gt;
 &lt;ul&gt;
@@ -116,7 +116,7 @@ __weak typeof(self)weakSelf = self;
     <link href="http://ihaodi.net/2016/03/21/iOS-QRcode%E8%AF%86%E5%88%AB%E5%8F%8A%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/"/>
     <id>http://ihaodi.net/2016/03/21/iOS-QRcode识别及相册图片二维码识别/</id>
     <published>2016-03-21T03:44:03.000Z</published>
-    <updated>2016-03-30T05:38:49.000Z</updated>
+    <updated>2016-04-01T03:15:25.000Z</updated>
     
     <content type="html">&lt;p&gt;最近碰到一个用户 在使用我们 &lt;a href=&quot;https://itunes.apple.com/hk/app/wei-lian-chuang-ye-she-jiao/id944154493?l=zh&amp;amp;mt=8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;微链App&lt;/a&gt; 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。&lt;/p&gt;
 &lt;p&gt;对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较&lt;/p&gt;
@@ -187,7 +187,7 @@ __weak typeof(self)weakSelf = self;
     <link href="http://ihaodi.net/2016/03/18/coding-net%E4%B8%8A%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/"/>
     <id>http://ihaodi.net/2016/03/18/coding-net上搭建hexo博客/</id>
     <published>2016-03-18T07:03:18.000Z</published>
-    <updated>2016-03-22T13:33:26.000Z</updated>
+    <updated>2016-04-01T03:15:22.000Z</updated>
     
     <content type="html">&lt;p&gt;在太多的地方搭建过博客了，重csdn到自己免费空间搭建wordpress，其次到基于otcopress在github、gitcafe搭建博客。想想自己搞得挺多，前几天收到gitcafe的邮件，尼玛被coding收购了，要我迁移博客到coding上，我勒个去！那就度娘下，看到唐巧的一篇文章 &lt;a href=&quot;http://devtang.com/2016/02/16/from-octopress-to-hexo/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;搭建hexo博客&lt;/a&gt;。好吧，那就玩一下~ (备注 coding是收费的啊，实在不行，去国外的github)&lt;/p&gt;
 &lt;h2 id=&quot;在mac上搭建Hexo&quot;&gt;&lt;a href=&quot;#在mac上搭建Hexo&quot; class=&quot;headerlink&quot; title=&quot;在mac上搭建Hexo&quot;&gt;&lt;/a&gt;在mac上搭建Hexo&lt;/h2&gt;&lt;p&gt;Hexo 原理:（引自唐巧）&lt;/p&gt;
@@ -198,7 +198,7 @@ __weak typeof(self)weakSelf = self;
 &lt;h3 id=&quot;mac上Hexo环境安装&quot;&gt;&lt;a href=&quot;#mac上Hexo环境安装&quot; class=&quot;headerlink&quot; title=&quot;mac上Hexo环境安装&quot;&gt;&lt;/a&gt;mac上Hexo环境安装&lt;/h3&gt;&lt;p&gt;先是装 node 看看这篇文章 &lt;a href=&quot;http://blog.teamtreehouse.com/install-node-js-npm-mac&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.teamtreehouse.com/install-node-js-npm-mac&lt;/a&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 看看有木有 homebrow 木有就安装&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ruby -e &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 使用Homebrew安装 快捷方便&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$brew install node&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;安装完成之后 会看到如下图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2016-03-186.05.51.png&quot; alt=&quot;图片&quot;&gt;&lt;br&gt;然后&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ihaodi.net/images/2016-03-186.05.51.png&quot; alt=&quot;图片&quot;&gt;&lt;br&gt;然后&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 安装hexo环境&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install -g hexo&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 新建文件夹 如：Hexoblog 文件夹 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ cd Hexoblog&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;// 初始化hexo 博客所需的文件&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ hexo init&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;之后就基本装完了&lt;/p&gt;
 &lt;h3 id=&quot;Hexo-插件安装&quot;&gt;&lt;a href=&quot;#Hexo-插件安装&quot; class=&quot;headerlink&quot; title=&quot;Hexo 插件安装&quot;&gt;&lt;/a&gt;Hexo 插件安装&lt;/h3&gt;&lt;p&gt;把下班的代码全复制粘贴到终端 就会全部执行&lt;/p&gt;
@@ -259,18 +259,17 @@ __weak typeof(self)weakSelf = self;
     <link href="http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/"/>
     <id>http://ihaodi.net/2016/01/17/2016-01-17-app-tui-yan-yun-ying-tu/</id>
     <published>2016-01-17T05:43:24.000Z</published>
-    <updated>2016-03-18T15:33:46.000Z</updated>
+    <updated>2016-04-01T03:17:05.000Z</updated>
     
     <content type="html">&lt;p&gt;App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; title=&quot;推广图&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.20.png&quot; alt=&quot;&quot; title=&quot;分工图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ihaodi.net/images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; title=&quot;推广图&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ihaodi.net/images/2016-01-17 13.52.20.png&quot; alt=&quot;&quot; title=&quot;分工图&quot;&gt;&lt;/p&gt;
 </content>
     
     <summary type="html">
     
       &lt;p&gt;App 运营在这个互联网时代越来越重要，成本越来越高。随着移动传媒的飞速发展，怎么高效推广及降低成本是我们可探讨的话题；&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;../images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; title=&quot;推广图&quot;&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&quot;http://ihaodi.net/images/2016-01-17 13.52.17.jpg&quot; alt=&quot;&quot; ti
     
     </summary>
     
