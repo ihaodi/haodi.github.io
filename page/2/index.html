@@ -238,6 +238,178 @@
             
               
                 
+                <a class="post-title-link" href="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/" itemprop="url">
+                  iOS QRcode识别及相册图片二维码读取识别
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-21T11:44:03+08:00" content="2016-03-21">
+              2016-03-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/21/iOS-QRcode识别及相册图片二维码识别/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/21/iOS-QRcode识别及相册图片二维码识别/" class="leancloud_visitors" data-flag-title="iOS QRcode识别及相册图片二维码读取识别">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>最近碰到一个用户 在使用我们 <a href="https://itunes.apple.com/hk/app/wei-lian-chuang-ye-she-jiao/id944154493?l=zh&amp;mt=8" target="_blank" rel="external">微链App</a> 的时候，在分辨率低或者频率低的显示器上扫不出二维码。然后网上找了很多，试了很多，还是没有找出合适的方法，想想把三种扫描（系统原生API，ZBar，ZXing）写个Demo，做个小总结，看看从什么地方可以找到解决方法，也希望各位大神能给我指条明路😄。</p>
+<p>对二维码的处理及系统原生API扫描、 Zbar扫描和Zing扫描 比较</p>
+<h2 id="iOS原生API"><a href="#iOS原生API" class="headerlink" title="iOS原生API"></a>iOS原生API</h2><p>系统扫描的效率是最高，反正包括各种你见过的没见过的码，但是有一点我不是很清楚 iOS7 扫描二维码可以，但从相册照片读取二维码苹果不支持，必须是iOS8+。<br><a href="https://github.com/yannickl/QRCodeReaderViewController" target="_blank" rel="external">https://github.com/yannickl/QRCodeReaderViewController</a><br><a href="https://github.com/zhengjinghua/MQRCodeReaderViewController" target="_blank" rel="external">https://github.com/zhengjinghua/MQRCodeReaderViewController</a></p>
+<p>这两个例子已经写的非常清楚了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 对于识别率的精度 就是屏幕有波浪一样</span><br><span class="line">    [self.captureSession setSessionPreset:AVCaptureSessionPresetHigh];</span><br><span class="line">   // 改成了 降低采集频率</span><br><span class="line">    [self.captureSession setSessionPreset:AVCaptureSessionPreset640x480];</span><br></pre></td></tr></table></figure>
+<p>不知道 有什么好的方法</p>
+<h2 id="ZXing-和-ZBar"><a href="#ZXing-和-ZBar" class="headerlink" title="ZXing 和 ZBar"></a>ZXing 和 ZBar</h2><p>具体代码 我就不在这里写了，Demo里 都写了，而且百度谷歌千篇一律，说说ZXing的一些用到的特点：</p>
+<ul>
+<li>对那种小圆点的二维码 ZXing和原生API 都是支持的，而ZBar 貌似不是支持的，反正我没搞定。</li>
+<li>ZBar 现在还在继续维护 ZBar 而已经停止了</li>
+<li>ZXing 可以识别图片中多个二维码</li>
+</ul>
+<p>ZBar中的识别率 本人觉得还是比较低</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//ZBar 中对 图片中二维码 识别</span><br><span class="line">	UIImage * aImage = #所获取的图片#</span><br><span class="line">	ZBarReaderController *read = [ZBarReaderController new];</span><br><span class="line">    CGImageRef cgImageRef = aImage.CGImage;</span><br><span class="line">    ZBarSymbol* symbol = nil;</span><br><span class="line">    for(symbol in [read scanImage:cgImageRef])&#123;</span><br><span class="line">        qrResult = symbol.data ;</span><br><span class="line">        NSLog(@&quot;qrResult = symbol.data %@&quot;,qrResult);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>ZXing 对圆点二维码的支持 及能够识别图片中多个二维码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// ZXing 只识别单个二维码</span><br><span class="line">UIImage *image = #需要识别的图片# </span><br><span class="line">ZXCGImageLuminanceSource *source = [[ZXCGImageLuminanceSource alloc] initWithCGImage:image.CGImage]; </span><br><span class="line">  ZXHybridBinarizer *binarizer = [[ZXHybridBinarizer alloc] initWithSource: source];</span><br><span class="line">   ZXBinaryBitmap *bitmap = [[ZXBinaryBitmap alloc] initWithBinarizer:binarizer];</span><br><span class="line">   </span><br><span class="line">   NSError *error;</span><br><span class="line">   </span><br><span class="line">   id&lt;ZXReader&gt; reader;   </span><br><span class="line">   if (NSClassFromString(@&quot;ZXMultiFormatReader&quot;)) &#123;</span><br><span class="line">       reader = [NSClassFromString(@&quot;ZXMultiFormatReader&quot;) performSelector:@selector(reader)];</span><br><span class="line">   &#125;</span><br><span class="line">   ZXDecodeHints *_hints = [ZXDecodeHints hints];</span><br><span class="line">   ZXResult *result = [reader decode:bitmap hints:_hints error:&amp;error];</span><br><span class="line">   if (result == nil) &#123;</span><br><span class="line">       NSLog(@&quot;无QRCode&quot;);</span><br><span class="line">       return;</span><br><span class="line">   &#125;</span><br><span class="line">   NSLog(@&quot;QRCode = %d，%@&quot;，result.barcodeFormat，result.text);</span><br></pre></td></tr></table></figure>
+<p>ZXing 识别图片中多个二维码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">UIImage *image = #需要识别的图片# </span><br><span class="line">ZXCGImageLuminanceSource *source = [[ZXCGImageLuminanceSource alloc] initWithCGImage:image.CGImage]; </span><br><span class="line">  ZXHybridBinarizer *binarizer = [[ZXHybridBinarizer alloc] initWithSource: source];</span><br><span class="line">  ZXBinaryBitmap *bitmap = [[ZXBinaryBitmap alloc] initWithBinarizer:binarizer];</span><br><span class="line">  ZXDecodeHints *hints = [ZXDecodeHints hints];</span><br><span class="line"></span><br><span class="line">   NSError *error = nil;</span><br><span class="line">   ZXQRCodeMultiReader * reader2 = [[ZXQRCodeMultiReader alloc]init];</span><br><span class="line">   NSArray *rs = [reader2 decodeMultiple:bitmap error:&amp;error];</span><br><span class="line">   // 或者  NSArray *rs =[reader2 decodeMultiple:bitmap hints:hints error:&amp;error];</span><br><span class="line">   NSLog(@&quot; err = %@&quot;,error);</span><br><span class="line">   for (ZXResult *resul in rs) &#123;</span><br><span class="line">       NSLog(@&quot; ---%@&quot;,resul.text);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>后面 就看你需求了</p>
+<h2 id="iOS-WebView中-长按二维码的识别"><a href="#iOS-WebView中-长按二维码的识别" class="headerlink" title="iOS WebView中 长按二维码的识别"></a>iOS WebView中 长按二维码的识别</h2><p>思路: </p>
+<ol>
+<li>长按webView 的过程中 截屏，再去解析是否有二维码，但是有个缺点 就是 万一截了一个 一半的二维码 那就无解了。</li>
+<li>在webview中 注入获取点击图片的JS 获取图片，再解析。缺点：万一图片过大 需要下载，势必会影响用户体验。</li>
+<li>webview 加载完成图片之后，图片势必缓存在 webview里，有什么方法可以获取webview 里的缓存图片。</li>
+</ol>
+<p>本人目前用的是 第二种方式。求大神教我第三种…<br>我在<a href="https://github.com/TimOliver/TOWebViewController" target="_blank" rel="external">TOWebViewController</a> 做了类扩展</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//要注入的 js 代码</span><br><span class="line">static NSString* const kTouchJavaScriptString=</span><br><span class="line">@&quot;document.ontouchstart=function(event)&#123;\</span><br><span class="line">x=event.targetTouches[0].clientX;\</span><br><span class="line">y=event.targetTouches[0].clientY;\</span><br><span class="line">document.location=\&quot;myweb:touch:start:\&quot;+x+\&quot;:\&quot;+y;&#125;;\</span><br><span class="line">document.ontouchmove=function(event)&#123;\</span><br><span class="line">x=event.targetTouches[0].clientX;\</span><br><span class="line">y=event.targetTouches[0].clientY;\</span><br><span class="line">document.location=\&quot;myweb:touch:move:\&quot;+x+\&quot;:\&quot;+y;&#125;;\</span><br><span class="line">document.ontouchcancel=function(event)&#123;\</span><br><span class="line">document.location=\&quot;myweb:touch:cancel\&quot;;&#125;;\</span><br><span class="line">document.ontouchend=function(event)&#123;\</span><br><span class="line">document.location=\&quot;myweb:touch:end\&quot;;&#125;;&quot;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">//部分核心代码 </span><br><span class="line">- (BOOL)ad_webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType&#123;</span><br><span class="line">    </span><br><span class="line">    NSString *requestString = [[request URL] absoluteString];</span><br><span class="line">    NSArray *components = [requestString componentsSeparatedByString:@&quot;:&quot;];</span><br><span class="line">    if ([components count] &gt; 1 &amp;&amp; [(NSString *)[components objectAtIndex:0]</span><br><span class="line">                                   isEqualToString:@&quot;myweb&quot;]) &#123;</span><br><span class="line">        if([(NSString *)[components objectAtIndex:1] isEqualToString:@&quot;touch&quot;])</span><br><span class="line">        &#123;</span><br><span class="line">            if ([(NSString *)[components objectAtIndex:2] isEqualToString:@&quot;start&quot;])</span><br><span class="line">            &#123;</span><br><span class="line">                self.gesState = GESTURE_STATE_START;</span><br><span class="line">                NSLog(@&quot;touch start!&quot;);</span><br><span class="line">                </span><br><span class="line">                float ptX = [[components objectAtIndex:3]floatValue];</span><br><span class="line">                float ptY = [[components objectAtIndex:4]floatValue];</span><br><span class="line">                NSLog(@&quot;touch point (%f, %f)&quot;, ptX, ptY);</span><br><span class="line">                </span><br><span class="line">                NSString *js = [NSString stringWithFormat:@&quot;document.elementFromPoint(%f, %f).tagName&quot;, ptX, ptY];</span><br><span class="line">                NSString * tagName = [self.webView stringByEvaluatingJavaScriptFromString:js];</span><br><span class="line">                self.imgURL = nil;</span><br><span class="line">                if ([tagName isEqualToString:@&quot;IMG&quot;]) &#123;</span><br><span class="line">                    self.imgURL = [NSString stringWithFormat:@&quot;document.elementFromPoint(%f, %f).src&quot;, ptX, ptY];</span><br><span class="line">                &#125;</span><br><span class="line">                if (self.imgURL) &#123;</span><br><span class="line">                    self.timer = [NSTimer scheduledTimerWithTimeInterval:longGestureInterval target:self selector:@selector(handleLongTouch) userInfo:nil repeats:NO];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            else if ([(NSString *)[components objectAtIndex:2] isEqualToString:@&quot;move&quot;])</span><br><span class="line">            &#123;</span><br><span class="line">                self.gesState = GESTURE_STATE_MOVE;</span><br><span class="line">                NSLog(@&quot;you are move&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if ([(NSString*)[components objectAtIndex:2]isEqualToString:@&quot;end&quot;]) &#123;</span><br><span class="line">            [self.timer invalidate];</span><br><span class="line">            self.timer = nil;</span><br><span class="line">            self.gesState = GESTURE_STATE_END;</span><br><span class="line">            NSLog(@&quot;touch end&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (self.imgURL &amp;&amp; self.gesState == GESTURE_STATE_END) &#123;</span><br><span class="line">            NSLog(@&quot;点的是图片&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        return NO;</span><br><span class="line">    &#125;</span><br><span class="line">//    return YES;</span><br><span class="line">    return [self ad_webView:webView shouldStartLoadWithRequest:request navigationType:navigationType];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)ad_webViewDidFinishLoad:(UIWebView *)webView&#123;</span><br><span class="line">    //控制缓存</span><br><span class="line">    [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:@&quot;WebKitCacheModelPreferenceKey&quot;];</span><br><span class="line"></span><br><span class="line">    // 响应touch事件，以及获得点击的坐标位置，用于保存图片</span><br><span class="line">    [webView stringByEvaluatingJavaScriptFromString:kTouchJavaScriptString];</span><br><span class="line">    </span><br><span class="line">    [self ad_webViewDidFinishLoad:webView];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>基本就可以了。</p>
+<ul>
+<li>终于找到取 webView 缓存的图片的方法了。 用的是 NSURLProtocol 方式，在github上找了一个 <a href="https://github.com/rnapier/RNCachingURLProtocol" target="_blank" rel="external">RNCachingURLProtocol</a>,基本原理是：webView 在处理请求的过程中会调用</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response</span><br></pre></td></tr></table></figure>
+<p> URLProtocol 把webView请求返回来的 data 用压缩的方式的存储在 cache的文件夹下, 发出请求的时候会先去读取缓存。本人对 RNCachingURLProtocol 做过修改 具体请看Demo</p>
+<ul>
+<li>转载请注明 作者：好迪 <a href="http://ihaodi.net/2016/03/21/iOS-QRcode%E8%AF%86%E5%88%AB%E5%8F%8A%E7%9B%B8%E5%86%8C%E5%9B%BE%E7%89%87%E4%BA%8C%E7%BB%B4%E7%A0%81%E8%AF%86%E5%88%AB/">文章地址</a></li>
+<li>水平有限 欢迎批评指正评论</li>
+</ul>
+<h2 id="Demo地址"><a href="#Demo地址" class="headerlink" title="Demo地址"></a>Demo地址</h2><p><a href="https://github.com/cuiwe000/QRCodeDemo.git" target="_blank" rel="external">https://github.com/cuiwe000/QRCodeDemo.git</a></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><ul>
+<li><a href="http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/" target="_blank" rel="external">http://blog.cnbluebox.com/blog/2014/08/26/ioser-wei-ma-sao-miao/</a></li>
+<li><a href="https://github.com/MxABC/LBXScan" target="_blank" rel="external">https://github.com/MxABC/LBXScan</a> 这个很全</li>
+<li><a href="https://developer.apple.com/library/safari/documentation/AppleApplications/Reference/SafariCSSRef/Articles/StandardCSSProperties.html#/apple_ref/doc/uid/TP30001266-SW1" target="_blank" rel="external">Apple CSS</a></li>
+<li><a href="http://my.oschina.net/hmj/blog/111344" target="_blank" rel="external">http://my.oschina.net/hmj/blog/111344</a></li>
+<li><a href="http://stackoverflow.com/questions/5995210/disabling-user-selection-in-uiwebview" target="_blank" rel="external">stackoverflow</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/CSS/:not" target="_blank" rel="external">CSS 参考</a></li>
+<li><a href="http://robnapier.net/offline-uiwebview-nsurlprotocol" target="_blank" rel="external">http://robnapier.net/offline-uiwebview-nsurlprotocol</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/03/18/coding-net上搭建hexo博客/" itemprop="url">
                   coding.net上搭建hexo博客
                 </a>
@@ -346,120 +518,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/17/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-17T16:09:04+08:00" content="2016-03-17">
-              2016-03-17
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/17/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/17/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/03/17/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这个世界都是从 hello world 开始的</p>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -505,7 +563,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -238,6 +238,148 @@
             
               
                 
+                <a class="post-title-link" href="/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/" itemprop="url">
+                  几款好用的Xcode 插件
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-09-12T17:23:23+08:00" content="2015-09-12">
+              2015-09-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ios/" itemprop="url" rel="index">
+                    <span itemprop="name">ios</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/09/12/2015-09-12-ji-kuan-hao-yong-de-xcode-cha-jian/" class="leancloud_visitors" data-flag-title="几款好用的Xcode 插件">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>   随着IOS的发展，Xcode也不断升级，IOS9出来之后，Xcode已经升级到Xcode 7了。那么相应的Xcode插件也不断涌出，高效的插件才能提高开发者的开发效率；<br>   下面我就介绍下本人比较好用的插件：</p>
+<p>####1.VVDocumenter<br>输入三个斜杠 “///“ 自动生成相应的注释代码形式</p>
+<p>下载地址: <a href="https://github.com/onevcat/VVDocumenter-Xcode" target="_blank" rel="external">https://github.com/onevcat/VVDocumenter-Xcode</a> </p>
+<p><img src="https://raw.githubusercontent.com/onevcat/VVDocumenter-Xcode/master/ScreenShot.gif&quot;" alt=""></p>
+<p>####2.XcodeColors<br>改变调试控制台颜色 ,经常跟<a href="https://github.com/CocoaLumberjack/CocoaLumberjack" target="_blank" rel="external">CocoaLumberjack</a>一块使用，如何使用github的说明文档中都详细说明了 </p>
+<p>下载地址: <a href="https://github.com/robbiehanson/XcodeColors" target="_blank" rel="external">https://github.com/robbiehanson/XcodeColors</a> </p>
+<p><img src="../images/2015-09-13 10.16.17.png" alt=""></p>
+<p>####3.CocoaPods for Xcode<br>下载地址: <a href="https://github.com/kattrali/cocoapods-xcode-plugin" target="_blank" rel="external">https://github.com/kattrali/cocoapods-xcode-plugin</a> </p>
+<p>####4.KSImageNamed-Xcode<br>下载地址: <a href="https://github.com/ksuther/KSImageNamed-Xcode" target="_blank" rel="external">https://github.com/ksuther/KSImageNamed-Xcode</a> </p>
+<p>####5.DerivedData Exterminator<br>下载地址: <a href="https://github.com/kattrali/deriveddata-exterminator" target="_blank" rel="external">https://github.com/kattrali/deriveddata-exterminator</a> </p>
+<p>####6.XAlign<br>下载地址: <a href="https://github.com/qfish/XAlign" target="_blank" rel="external">https://github.com/qfish/XAlign</a> </p>
+<p>####7.ColorSense for Xcode<br>下载地址: <a href="https://github.com/omz/ColorSense-for-Xcode" target="_blank" rel="external">https://github.com/omz/ColorSense-for-Xcode</a> </p>
+<hr>
+<p>###当插件失效操作方式</p>
+<ul>
+<li>defaults read /Applications/Xcode.app/Contents/Info DVTPlugInCompatibilityUUID</li>
+<li>find ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins -name Info.plist -maxdepth 3 | xargs -I{} defaults write {} DVTPlugInCompatibilityUUIDs -array-add 0420B86A-AA43-4792-9ED0-6FE0F2B16A13</li>
+<li>defaults delete com.apple.dt.Xcode DVTPlugInManagerNonApplePlugIns-Xcode-6.4</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/09/09/2015-09-09-ios-bian-cheng-feng-ge-ji-ming-ming-gui-fan/" itemprop="url">
                   IOS 编程风格及命名规范
                 </a>
@@ -686,194 +828,6 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/" itemprop="url">
-                  ios 开发博客文章链接
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-09-07T10:04:05+08:00" content="2015-09-07">
-              2015-09-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/ios/" itemprop="url" rel="index">
-                    <span itemprop="name">ios</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/09/07/2015-09-07-ios-kai-fa-bo-ke-wen-zhang-lian-jie/" class="leancloud_visitors" data-flag-title="ios 开发博客文章链接">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul>
-<li>OneV’s Den: <a href="http://onevcat.com" target="_blank" rel="external">http://onevcat.com</a>  </li>
-<li>破船之家: <a href="http://beyondvincent.com" target="_blank" rel="external">http://beyondvincent.com</a>  </li>
-<li>NSHipster: <a href="http://nshipster.cn" target="_blank" rel="external">http://nshipster.cn</a>  </li>
-<li>Limboy 无网不剩: <a href="http://blog.leezhong.com" target="_blank" rel="external">http://blog.leezhong.com</a>  </li>
-<li>唐巧的技术博客: <a href="http://blog.devtang.com" target="_blank" rel="external">http://blog.devtang.com</a>  </li>
-<li>Lex Tang: <a href="http://lexrus.com" target="_blank" rel="external">http://lexrus.com</a>  </li>
-<li>念茜的博客: <a href="http://nianxi.net" target="_blank" rel="external">http://nianxi.net</a>  </li>
-<li>Xcode Dev: <a href="http://blog.xcodev.com" target="_blank" rel="external">http://blog.xcodev.com</a>  </li>
-<li>Ted’s Homepage: <a href="http://wufawei.com" target="_blank" rel="external">http://wufawei.com</a>  </li>
-<li>txx’s blog: <a href="http://blog.t-xx.me" target="_blank" rel="external">http://blog.t-xx.me</a>  </li>
-<li>Kevin Blog: <a href="http://zhowkev.in" target="_blank" rel="external">http://zhowkev.in</a>  </li>
-<li>阿毛的蛋疼地: <a href="http://www.xiangwangfeng.com" target="_blank" rel="external">http://www.xiangwangfeng.com</a>  </li>
-<li>亚庆的 Blog: <a href="http://billwang1990.github.io" target="_blank" rel="external">http://billwang1990.github.io</a>  </li>
-<li>Nonomori: <a href="http://nonomori.farbox.com" target="_blank" rel="external">http://nonomori.farbox.com</a>  </li>
-<li>言无不尽: <a href="http://tang3w.com" target="_blank" rel="external">http://tang3w.com</a>  </li>
-<li>Wonderffee’s Blog: <a href="http://wonderffee.github.io" target="_blank" rel="external">http://wonderffee.github.io</a>  </li>
-<li>I’m TualatriX: <a href="http://imtx.me" target="_blank" rel="external">http://imtx.me</a>  </li>
-<li>Cocoabit: <a href="http://blog.cocoabit.com" target="_blank" rel="external">http://blog.cocoabit.com</a>  </li>
-<li><p>nixzhu on scriptogr.am :<a href="http://nixzhu.me" target="_blank" rel="external">http://nixzhu.me</a> </p>
-<ul>
-<li><a href="http://studentdeng.github.io" target="_blank" rel="external">http://studentdeng.github.io</a>  不会开机的男孩   </li>
-<li><a href="http://blog.inico.me" target="_blank" rel="external">http://blog.inico.me</a>  Nico </li>
-<li><a href="http://hufeng825.github.io" target="_blank" rel="external">http://hufeng825.github.io</a>  阿峰的技术窝窝</li>
-<li><a href="http://answerhuang.duapp.com" target="_blank" rel="external">http://answerhuang.duapp.com</a>  answer_huang</li>
-<li><a href="http://blog.nswebfrog.com/" target="_blank" rel="external">http://blog.nswebfrog.com/</a>  webfrogs</li>
-<li><a href="http://joeyio.com" target="_blank" rel="external">http://joeyio.com</a>  代码手工艺人 </li>
-<li><a href="http://gracelancy.com" target="_blank" rel="external">http://gracelancy.com</a>  Lancy’s Blog</li>
-<li><a href="http://www.imallen.com" target="_blank" rel="external">http://www.imallen.com</a>  I’m Allen</li>
-<li><a href="http://imi.im/" target="_blank" rel="external">http://imi.im/</a>  Travis’ Blog    </li>
-<li><a href="http://wangzz.github.io/" target="_blank" rel="external">http://wangzz.github.io/</a>  王中周的技术博客   </li>
-<li><a href="http://jiajun.org/" target="_blank" rel="external">http://jiajun.org/</a>  会写代码的猪   </li>
-<li><a href="http://wangkewei.cnblogs.com/" target="_blank" rel="external">http://wangkewei.cnblogs.com/</a>  克伟的博客   </li>
-<li><a href="http://cnblogs.com/biosli" target="_blank" rel="external">http://cnblogs.com/biosli</a>  摇滚诗人   </li>
-<li><a href="http://geeklu.com/" target="_blank" rel="external">http://geeklu.com/</a>  Luke’s Homepage  </li>
-<li><a href="http://iiiyu.com/" target="_blank" rel="external">http://iiiyu.com/</a>  萧宸宇</li>
-<li><a href="http://www.heyuan110.com/" target="_blank" rel="external">http://www.heyuan110.com/</a>  Yuan博客</li>
-<li><a href="http://shiningio.com/" target="_blank" rel="external">http://shiningio.com/</a>  Shining IO</li>
-<li><a href="http://www.yifeiyang.net/" target="_blank" rel="external">http://www.yifeiyang.net/</a>  YIFEIYANG–易飞扬的博客</li>
-<li><a href="http://koofrank.com/" target="_blank" rel="external">http://koofrank.com/</a>  KooFrank’s Blog</li>
-<li><a href="http://helloitworks.com" target="_blank" rel="external">http://helloitworks.com</a>  hello it works</li>
-<li><a href="http://msching.github.io/" target="_blank" rel="external">http://msching.github.io/</a>  码农人生    </li>
-<li><a href="http://yulingtianxia.com" target="_blank" rel="external">http://yulingtianxia.com</a>  玉令天下的Blog    </li>
-<li><a href="http://www.hotobear.com/" target="_blank" rel="external">http://www.hotobear.com/</a>  不掏蜂窝的熊       </li>
-<li><a href="https://andelf.github.io/" target="_blank" rel="external">https://andelf.github.io/</a>  猫·仁波切       <ul>
-<li><a href="http://ivoryxiong.org/" target="_blank" rel="external">http://ivoryxiong.org/</a>  煲仔饭       </li>
-<li><a href="http://adad184.com" target="_blank" rel="external">http://adad184.com</a>  里脊串的开发随笔      </li>
-</ul>
-</li>
-<li><a href="http://chun.tips/" target="_blank" rel="external">http://chun.tips/</a>  Chun Tips    <ul>
-<li><a href="http://blog.callmewhy.com/" target="_blank" rel="external">http://blog.callmewhy.com/</a>  Why’s blog - 汪海的实验室      </li>
-<li><a href="http://tutuge.me/" target="_blank" rel="external">http://tutuge.me/</a>  土土哥的技术Blog     </li>
-<li><a href="http://www.olinone.com/" target="_blank" rel="external">http://www.olinone.com/</a>  庞海礁的个人空间   </li>
-</ul>
-</li>
-<li><a href="http://casatwy.com/" target="_blank" rel="external">http://casatwy.com/</a>  Casa Taloyum   </li>
-<li><a href="http://www.cnblogs.com/kenshincui/" target="_blank" rel="external">http://www.cnblogs.com/kenshincui/</a>  Kenshin Cui’s Blog </li>
-<li><a href="http://suenblog.duapp.com/" target="_blank" rel="external">http://suenblog.duapp.com/</a>  技术哥的博客 </li>
-<li><a href="http://www.tanhao.me/" target="_blank" rel="external">http://www.tanhao.me/</a>  老谭笔记 </li>
-<li><a href="http://www.coderyi.com/" target="_blank" rel="external">http://www.coderyi.com/</a>  coderyi  </li>
-<li><a href="http://blog.leichunfeng.com" target="_blank" rel="external">http://blog.leichunfeng.com</a>  雷纯锋的技术博客</li>
-</ul>
-</li>
-</ul>
-<p>######还有 好的博客 文章 ，欢迎大家留言 分享</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -919,7 +873,7 @@ CGRect frame = (CGRect){ .origin = CGPointZero, .size = frame.size };
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
